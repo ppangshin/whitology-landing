@@ -777,29 +777,63 @@ footer .footer-links a:hover { color: var(--accent); }
 /* ===== MOBILE FIX ===== */
 @media (max-width: 768px){
 
-  /* 85% 4주 10분 한 줄 유지 */
+  /* 1) HERO는 중앙 정렬 유지 (원상복귀) */
+  .hero .container,
+  .hero-text{
+    text-align: center;
+  }
+
+  /* 2) 버튼: 모바일에서 통일된 폭 + 가운데 정렬 */
+  .hero-actions{
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero .btn-primary,
+  .hero .btn-secondary{
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+  }
+
+  /* 3) 85% / 4주 / 10분: 한 줄(가로) 유지 */
   .hero-stats{
     flex-direction: row;
     justify-content: space-between;
-    gap: 0;
-    margin-top: 28px;
+    gap: 10px;
+    margin-top: 22px;
+    flex-wrap: nowrap;
   }
 
   .stat-item{
     flex: 1;
     text-align: center;
+    min-width: 0;
   }
 
-  /* 두번째 사진 섹션 왼쪽 정렬 */
-  .hero .container{
+  .stat-item .stat-number{
+    font-size: 1.8rem;      /* 모바일에서 너무 크면 줄임 */
+    line-height: 1.1;
+  }
+
+  .stat-item .stat-label{
+    font-size: 0.82rem;
+    line-height: 1.2;
+    white-space: nowrap;    /* '사용자 효과 체감' 줄바꿈 방지 */
+  }
+
+  /* 4) "AI가 코칭해드려요" 섹션(= app-preview)만 왼쪽 정렬 */
+  .app-preview .container{
     text-align: left;
   }
 
-  .hero-text{
-    text-align: left;
+  .app-features{
+    align-items: flex-start;
   }
 
-  .hero-actions{
+  .app-feature{
+    text-align: left;
     align-items: flex-start;
   }
 
