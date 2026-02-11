@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Whitology | AI 구강 관리 플랫폼</title>
+
+<!-- Meta Pixel (Facebook/Instagram) placeholder -->
+<!-- Replace YOUR_PIXEL_ID with actual Meta Pixel ID -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+// fbq('init', 'YOUR_PIXEL_ID');
+// fbq('track', 'PageView');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #f8f9fa;
+  --ice: #eef3f8;
+  --sky: #c3daf5;
+  --primary: #3a7bd5;
+  --primary-deep: #1e4fa0;
+  --accent: #00d4aa;
+  --accent-glow: #00ffcc;
+  --coral: #ff6b6b;
+  --peach: #ffa07a;
+  --violet: #9b7dd4;
+  --dark: #0a0e17;
+  --dark-soft: #1a1f2e;
+  --text: #2d3748;
+  --text-muted: #718096;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ===== UTILITY ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+
+/* ===== PRELOADER ===== */
+#preloader {
+  position: fixed; inset:0; z-index:9999;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+#preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.loader-ring {
+  width: 60px; height: 60px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  padding: 16px 0;
+  background: rgba(10,14,23,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: all 0.3s;
+}
+nav.scrolled { padding: 10px 0; background: rgba(10,14,23,0.92); }
+nav .container { display:flex; align-items:center; justify-content:space-between; }
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--white);
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-cta {
+  background: var(--accent);
+  color: var(--dark);
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none; cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--accent-glow); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(0,212,170,0.3); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  padding-top: 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50%; left: -20%; width: 80%; height: 120%;
+  background: radial-gradient(ellipse, rgba(58,123,213,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; top: 0; right: -10%; width: 60%; height: 100%;
+  background: radial-gradient(ellipse, rgba(0,212,170,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative; z-index: 2;
+}
+.hero-text { max-width: 560px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.8s ease;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px;
+  background: var(--accent); border-radius:50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s 0.1s ease both;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  font-weight: 300;
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--accent), #00b894);
+  color: var(--dark);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none; cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity:0; transition:opacity 0.3s;
+}
+.btn-primary:hover::after { opacity:1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,212,170,0.35); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: var(--glass); border-color: var(--accent); color: var(--accent); }
+
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 48px;
+  animation: fadeInUp 0.8s 0.4s ease both;
+}
+.stat-item .stat-number {
+  font-size: 1.6rem; font-weight: 700; color: var(--accent);
+  font-family: 'Playfair Display', serif;
+}
+.stat-item .stat-label {
+  font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 1.2s 0.3s ease both;
+}
+.hero-visual img {
+  width: 100%; max-width: 540px;
+  border-radius: 20px;
+  position: relative; z-index: 2;
+}
+.hero-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,212,170,0.15), transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 1;
+}
+
+/* ===== SECTIONS COMMON ===== */
+section { padding: 120px 0; position: relative; }
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ===== FEATURES ===== */
+.features { background: var(--dark-soft); }
+.features .container > .section-desc { margin-bottom: 64px; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.feature-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px 32px;
+  transition: all 0.4s;
+  position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.feature-card:hover { transform: translateY(-4px); border-color: rgba(0,212,170,0.3); }
+.feature-card:hover::before { opacity:1; }
+.feature-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.feature-icon.blue { background: rgba(58,123,213,0.15); }
+.feature-icon.green { background: rgba(0,212,170,0.15); }
+.feature-icon.violet { background: rgba(155,125,212,0.15); }
+.feature-card h3 {
+  font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 10px;
+}
+.feature-card p {
+  font-size: 0.9rem; color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ===== PRODUCT SHOWCASE ===== */
+.showcase { overflow: hidden; }
+.showcase .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.showcase-image img {
+  width: 100%;
+  border-radius: 24px;
+}
+.showcase-content .section-desc { margin-bottom: 32px; }
+.showcase-list {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.showcase-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 0.95rem; color: rgba(255,255,255,0.8);
+}
+.showcase-list .check {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  background: rgba(0,212,170,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+/* ===== PRODUCTS ===== */
+.products { background: var(--dark-soft); }
+.products .section-desc { margin-bottom: 56px; }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.product-card-img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover;
+  border-bottom: 1px solid var(--glass-border);
+}
+.product-card-body { padding: 28px; }
+.product-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.product-tag.blue { background: rgba(58,123,213,0.2); color: var(--sky); }
+.product-tag.coral { background: rgba(255,107,107,0.2); color: var(--peach); }
+.product-tag.violet { background: rgba(155,125,212,0.2); color: #c4b5fd; }
+.product-card h3 {
+  font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 8px;
+}
+.product-card p {
+  font-size: 0.85rem; color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how-it-works .section-title { text-align: center; }
+.how-it-works .section-label { text-align: center; }
+.how-it-works .section-desc { text-align: center; margin: 0 auto 64px; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+}
+.steps::before {
+  content:'';
+  position: absolute; top: 48px; left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--primary), var(--violet), var(--accent));
+  opacity: 0.3;
+}
+.step {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+.step-num {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 2px solid var(--accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  position: relative; z-index: 2;
+  background: var(--dark);
+}
+.step h4 {
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 8px;
+}
+.step p {
+  font-size: 0.85rem; color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== APP PREVIEW ===== */
+.app-preview {
+  background: linear-gradient(180deg, var(--dark-soft) 0%, var(--dark) 100%);
+}
+.app-preview .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.app-preview-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+.app-features {
+  display: flex; flex-direction: column; gap: 24px;
+  margin-top: 32px;
+}
+.app-feature {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.app-feature-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.app-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+.app-feature p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* ===== SOCIAL PROOF ===== */
+.social-proof {
+  text-align: center;
+  background: var(--dark);
+}
+.social-proof .section-desc { margin: 0 auto 56px; }
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: left;
+  transition: all 0.3s;
+}
+.review-card:hover { border-color: rgba(0,212,170,0.2); }
+.review-stars { color: #ffd700; font-size: 0.9rem; margin-bottom: 14px; }
+.review-text {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.review-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.review-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; color: var(--white);
+}
+.review-name { font-size: 0.85rem; font-weight: 600; }
+.review-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+}
+.cta-section::before {
+  content:'';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,212,170,0.08) 0%, transparent 60%);
+}
+.cta-section .container { position: relative; z-index: 2; }
+.cta-section .section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.cta-section .section-desc {
+  margin: 0 auto 40px;
+  max-width: 480px;
+}
+.cta-group {
+  display: flex; gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-note {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--glass-border);
+  text-align: center;
+}
+footer p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+footer .footer-links {
+  display: flex; justify-content: center; gap: 24px;
+  margin-top: 12px;
+}
+footer .footer-links a {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer .footer-links a:hover { color: var(--accent); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== EARLY ACCESS MODAL ===== */
+.modal-overlay {
+  position: fixed; inset:0; z-index: 1000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity:0; visibility:hidden;
+  transition: all 0.3s;
+}
+.modal-overlay.active { opacity:1; visibility:visible; }
+.modal {
+  background: var(--dark-soft);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 460px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+.modal-overlay.active .modal { transform: scale(1); }
+.modal h2 {
+  font-size: 1.5rem; font-weight: 800;
+  margin-bottom: 12px;
+}
+.modal p {
+  font-size: 0.9rem; color: var(--text-muted);
+  margin-bottom: 28px; line-height: 1.6;
+}
+.modal-form {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.modal-form input {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.modal-form input::placeholder { color: var(--text-muted); }
+.modal-form input:focus { border-color: var(--accent); }
+.modal-form button {
+  background: linear-gradient(135deg, var(--accent), #00b894);
+  color: var(--dark);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none; cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.modal-form button:hover { box-shadow: 0 8px 30px rgba(0,212,170,0.35); }
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem; cursor: pointer;
+}
+.modal-success {
+  display: none;
+}
+.modal-success.active { display: block; }
+.modal-success h2 { color: var(--accent); }
+
+/* ===== FLOATING INDICATOR ===== */
+.float-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 90;
+  background: linear-gradient(135deg, var(--accent), #00b894);
+  color: var(--dark);
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0,212,170,0.4);
+  transition: all 0.3s;
+  animation: float-bounce 3s ease-in-out infinite;
+  text-decoration: none;
+}
+.float-indicator:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(0,212,170,0.5); }
+@keyframes float-bounce {
+  0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-text { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-visual { margin-top: 40px; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .showcase .container { grid-template-columns: 1fr; }
+  .showcase-image { order: -1; }
+  .app-preview .container { grid-template-columns: 1fr; text-align: center; }
+  .app-preview-img { margin: 0 auto; }
+  .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  section { padding: 80px 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .reviews { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader"><div class="loader-ring"></div></div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-logo">Whit<span>o</span>logy</div>
+    <button class="nav-cta" onclick="trackClick('nav_cta'); openModal();">사전 예약하기</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-text">
+      <div class="hero-badge">2026 Early Access 모집중</div>
+      <h1>집에서 하는<br><span class="highlight">치과급 미백 케어</span></h1>
+      <p class="hero-sub">AI가 당신의 치아를 분석하고, LED 디바이스가 직접 개선합니다.<br>4주 만에 눈에 보이는 변화를 경험하세요.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="trackClick('hero_cta_primary'); openModal();">
+          <span>✨</span> 사전 예약 신청
+        </button>
+        <a href="#how" class="btn-secondary" onclick="trackClick('hero_cta_secondary');">
+          자세히 알아보기
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">85%</div>
+          <div class="stat-label">사용자 효과 체감</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4주</div>
+          <div class="stat-label">평균 변화 확인</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10분</div>
+          <div class="stat-label">하루 케어 시간</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <img src="images/hero-product.jpeg" alt="Whitology 디바이스와 제제, 앱 화면">
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-label reveal">WHY WHITOLOGY</div>
+    <div class="section-title reveal">다른 미백 제품과<br>무엇이 다른가요?</div>
+    <div class="section-desc reveal">일회성 제품이 아닌, AI와 LED 기술로 매일 관리하는 새로운 습관을 만듭니다.</div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon blue">🔬</div>
+        <h3>AI 정밀 분석</h3>
+        <p>사진 2장으로 치아 색상, 잇몸 건강, 플라그 수준을 10초 만에 분석합니다. Shade 단계까지 정밀하게 측정해요.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon green">💡</div>
+        <h3>의료급 LED 디바이스</h3>
+        <p>치과에서 사용하는 것과 동일한 파장의 LED 기술. 미백과 잇몸 케어를 하나의 디바이스로 해결합니다.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon violet">📊</div>
+        <h3>맞춤형 케어 플랜</h3>
+        <p>AI 분석 결과를 바탕으로 나만의 4주 케어 플랜이 자동 생성됩니다. Before-After로 변화를 수치로 확인하세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showcase: Device -->
+<section class="showcase" id="how">
+  <div class="container">
+    <div class="showcase-image reveal">
+      <img src="images/device-front.jpeg" alt="Whitology LED 디바이스">
+    </div>
+    <div class="showcase-content">
+      <div class="section-label reveal">SMART DEVICE</div>
+      <div class="section-title reveal">하루 10분,<br>입에 물기만 하세요</div>
+      <p class="section-desc reveal">의료급 LED와 전용 제제의 시너지. 칫솔질 후 10분이면 충분합니다.</p>
+      <ul class="showcase-list reveal">
+        <li><span class="check">✓</span>미백 모드 + 잇몸 케어 모드 자동 전환</li>
+        <li><span class="check">✓</span>앱 연동으로 사용 시간 자동 트래킹</li>
+        <li><span class="check">✓</span>무선 충전 & 방수 설계</li>
+        <li><span class="check">✓</span>사용 중 콘텐츠 소비 (앱 내 10분 라이브러리)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-label reveal">CARE SOLUTIONS</div>
+    <div class="section-title reveal">3가지 전용 제제</div>
+    <p class="section-desc reveal">AI가 분석한 결과에 따라 최적의 제제를 추천해드립니다.</p>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <img class="product-card-img" src="images/whitening-pen.jpeg" alt="Whitening 제제">
+        <div class="product-card-body">
+          <span class="product-tag blue">미백 전용</span>
+          <h3>Whitening</h3>
+          <p>치과급 미백 성분이 LED 빛과 반응하여 치아 표면의 착색을 집중 개선합니다.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-card-img" src="images/gum-care.jpeg" alt="Gum Care 제제">
+        <div class="product-card-body">
+          <span class="product-tag coral">잇몸 케어</span>
+          <h3>Gum Care</h3>
+          <p>잇몸 염증을 진정시키고 건강한 잇몸으로 회복시키는 전용 솔루션입니다.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-card-img" src="images/fluoride-care.jpeg" alt="Fluoride Care 제제">
+        <div class="product-card-body">
+          <span class="product-tag violet">충치 예방</span>
+          <h3>Fluoride Care</h3>
+          <p>불소 코팅으로 치아를 보호하고 충치를 예방하는 마무리 케어 제제입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-label reveal">HOW IT WORKS</div>
+    <div class="section-title reveal">시작은 간단합니다</div>
+    <p class="section-desc reveal">사진 한 장으로 시작해서, 4주 뒤 달라진 나를 만나보세요.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>사진 촬영</h4>
+        <p>앱에서 치아 사진 2장을 촬영하면 AI가 15초 만에 분석 완료</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>맞춤 플랜</h4>
+        <p>분석 결과를 바탕으로 나만의 4주 케어 플랜이 자동 생성</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>매일 10분 케어</h4>
+        <p>LED 디바이스 + 전용 제제로 하루 10분 홈케어 실행</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>변화 확인</h4>
+        <p>주간 재촬영으로 Before-After 변화를 수치로 확인</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- App Preview -->
+<section class="app-preview">
+  <div class="container">
+    <div class="reveal">
+      <img class="app-preview-img" src="images/app-device.jpeg" alt="Whitology 앱 화면">
+    </div>
+    <div>
+      <div class="section-label reveal">SMART APP</div>
+      <div class="section-title reveal">AI가 매일<br>코칭해드려요</div>
+      <p class="section-desc reveal">매일 앱을 열고 싶어지는 재미있는 구강 관리 경험</p>
+      <div class="app-features">
+        <div class="app-feature reveal">
+          <div class="app-feature-icon">🎯</div>
+          <div>
+            <h4>데일리 미션</h4>
+            <p>칫솔질 인증, 디바이스 사용, 가글 등 매일 미션 수행</p>
+          </div>
+        </div>
+        <div class="app-feature reveal">
+          <div class="app-feature-icon">🔥</div>
+          <div>
+            <h4>Streak 시스템</h4>
+            <p>연속 일수를 기록하고 보상을 받아보세요</p>
+          </div>
+        </div>
+        <div class="app-feature reveal">
+          <div class="app-feature-icon">📈</div>
+          <div>
+            <h4>실시간 진행률</h4>
+            <p>목표까지 남은 거리를 한눈에 확인</p>
+          </div>
+        </div>
+        <div class="app-feature reveal">
+          <div class="app-feature-icon">🏆</div>
+          <div>
+            <h4>보상 시스템</h4>
+            <p>포인트 적립, 배지 획득, 할인 쿠폰까지</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof -->
+<section class="social-proof">
+  <div class="container">
+    <div class="section-label reveal">REVIEWS</div>
+    <div class="section-title reveal">베타 테스터들의 후기</div>
+    <p class="section-desc reveal">먼저 경험한 분들의 솔직한 이야기</p>
+    <div class="reviews">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"치과 미백 30만원 쓰려다가 이거 먼저 써봤는데, 2주 만에 주변에서 티 나냐고 물어봤어요. 앱이 매일 알림 줘서 까먹지 않고 할 수 있었어요."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">정*현</div>
+            <div class="review-meta">28세 · 사용 4주</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"매일 10분이라 부담 없고, 앱에서 변화 그래프 보는 재미가 있어요. 커피 많이 마시는데 확실히 누런 기가 줄었습니다."</p>
+        <div class="review-author">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">김*아</div>
+            <div class="review-meta">25세 · 사용 3주</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"잇몸이 약해서 걱정했는데 잇몸 케어 모드 쓰니까 잇몸 점수가 진짜 올라갔어요. AI 분석이 생각보다 정확해서 놀랐습니다."</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">이*준</div>
+            <div class="review-meta">32세 · 사용 5주</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label reveal">LIMITED OFFER</div>
+    <div class="section-title reveal">지금 사전 예약하면<br><span style="color:var(--accent);">30% 할인</span></div>
+    <p class="section-desc reveal">정식 출시 전, 한정 수량으로 사전 예약을 진행합니다.<br>먼저 신청하신 분께 특별 가격을 드려요.</p>
+    <div class="cta-group reveal">
+      <button class="btn-primary" onclick="trackClick('bottom_cta'); openModal();">
+        <span>🎁</span> 사전 예약 신청하기
+      </button>
+    </div>
+    <p class="cta-note reveal">* 사전 예약 시 결제가 발생하지 않습니다.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:12px;">Whit<span style="color:var(--accent)">o</span>logy</p>
+    <p>© 2026 Whitology. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+      <a href="#">고객센터</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<a class="float-indicator" onclick="trackClick('floating_cta'); openModal();">
+  🦷 사전 예약 30% 할인
+</a>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modal-form-view">
+      <h2>사전 예약 신청</h2>
+      <p>정식 출시 시 30% 할인 + 전용 제제 1개 무료 증정!<br>신청 후 결제는 발생하지 않습니다.</p>
+      <div class="modal-form">
+        <input type="text" id="userName" placeholder="이름">
+        <input type="tel" id="userPhone" placeholder="연락처 (010-0000-0000)">
+        <input type="email" id="userEmail" placeholder="이메일">
+        <button onclick="submitForm()">사전 예약 신청하기</button>
+      </div>
+    </div>
+    <div id="modal-success" class="modal-success">
+      <h2>🎉 신청 완료!</h2>
+      <p style="margin-top:16px;">사전 예약이 완료되었습니다.<br>출시 시 입력하신 연락처로 안내드릴게요.<br><br><strong style="color:var(--accent);">30% 할인 + 전용 제제 1개 무료!</strong></p>
+      <button class="btn-primary" style="margin-top:24px;width:100%;justify-content:center;" onclick="closeModal();">확인</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== TRACKING SYSTEM =====
+const STORAGE_KEY = 'whitology_analytics';
+
+function getAnalytics() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { visits: [], clicks: [], submissions: [] };
+  } catch { return { visits: [], clicks: [], submissions: [] }; }
+}
+
+function saveAnalytics(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// Track page visit
+function trackVisit() {
+  const data = getAnalytics();
+  const visit = {
+    timestamp: new Date().toISOString(),
+    referrer: document.referrer || 'direct',
+    userAgent: navigator.userAgent,
+    screen: `${screen.width}x${screen.height}`,
+    utm_source: getParam('utm_source'),
+    utm_medium: getParam('utm_medium'),
+    utm_campaign: getParam('utm_campaign'),
+    utm_content: getParam('utm_content'),
+  };
+  data.visits.push(visit);
+  saveAnalytics(data);
+
+  // Send to admin (via broadcast channel for same-origin)
+  try {
+    const bc = new BroadcastChannel('whitology_analytics');
+    bc.postMessage({ type: 'visit', data: visit });
+  } catch(e) {}
+}
+
+// Track button clicks
+function trackClick(buttonId) {
+  const data = getAnalytics();
+  const click = {
+    timestamp: new Date().toISOString(),
+    button: buttonId,
+    referrer: document.referrer || 'direct',
+    utm_source: getParam('utm_source'),
+    utm_campaign: getParam('utm_campaign'),
+  };
+  data.clicks.push(click);
+  saveAnalytics(data);
+
+  try {
+    const bc = new BroadcastChannel('whitology_analytics');
+    bc.postMessage({ type: 'click', data: click });
+  } catch(e) {}
+
+  // Meta Pixel tracking
+  // if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: buttonId });
+}
+
+function getParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name) || '';
+}
+
+// ===== MODAL =====
+function openModal() {
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+  // Reset to form view after delay
+  setTimeout(() => {
+    document.getElementById('modal-form-view').style.display = '';
+    document.getElementById('modal-success').classList.remove('active');
+  }, 300);
+}
+
+function submitForm() {
+  const name = document.getElementById('userName').value.trim();
+  const phone = document.getElementById('userPhone').value.trim();
+  const email = document.getElementById('userEmail').value.trim();
+
+  if (!name || !phone) {
+    alert('이름과 연락처를 입력해주세요.');
+    return;
+  }
+
+  const data = getAnalytics();
+  const submission = {
+    timestamp: new Date().toISOString(),
+    name, phone, email,
+    utm_source: getParam('utm_source'),
+    utm_medium: getParam('utm_medium'),
+    utm_campaign: getParam('utm_campaign'),
+    utm_content: getParam('utm_content'),
+    referrer: document.referrer || 'direct',
+  };
+  data.submissions.push(submission);
+  saveAnalytics(data);
+
+  try {
+    const bc = new BroadcastChannel('whitology_analytics');
+    bc.postMessage({ type: 'submission', data: submission });
+  } catch(e) {}
+
+  // Meta Pixel
+  // if(typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'pre_order' });
+
+  // Show success
+  document.getElementById('modal-form-view').style.display = 'none';
+  document.getElementById('modal-success').classList.add('active');
+}
+
+// ===== INIT =====
+window.addEventListener('load', () => {
+  // Remove preloader
+  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 600);
+  
+  // Track visit
+  trackVisit();
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+</script>
+</body>
+</html>
