@@ -773,6 +773,38 @@ footer .footer-links a:hover { color: var(--accent); }
   .hero-stats { flex-direction: column; gap: 16px; }
   .hero-actions { flex-direction: column; align-items: center; }
 }
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px){
+
+  /* 85% 4주 10분 한 줄 유지 */
+  .hero-stats{
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    margin-top: 28px;
+  }
+
+  .stat-item{
+    flex: 1;
+    text-align: center;
+  }
+
+  /* 두번째 사진 섹션 왼쪽 정렬 */
+  .hero .container{
+    text-align: left;
+  }
+
+  .hero-text{
+    text-align: left;
+  }
+
+  .hero-actions{
+    align-items: flex-start;
+  }
+
+}
+
 </style>
 </head>
 <body>
