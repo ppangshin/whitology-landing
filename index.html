@@ -187,6 +187,7 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 .hero-actions {
   display: flex; gap: 14px; flex-wrap: wrap;
   animation: fadeInUp 0.8s 0.3s ease both;
+  margin-bottom: 60px;
 }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
@@ -225,7 +226,7 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 .btn-secondary:hover { background: var(--glass); border-color: var(--accent); color: var(--accent); }
 
 .hero-stats {
-  display: flex; gap: 40px; margin-top: 64px;
+  display: flex; gap: 40px; margin-top: 48px;
   animation: fadeInUp 0.8s 0.4s ease both;
 }
 .stat-item .stat-number {
@@ -278,7 +279,7 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 }
 
 /* ===== SECTIONS COMMON ===== */
-section { padding: 80px 0; position: relative; }
+section { padding: 60px 0; position: relative; }
 .section-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -974,9 +975,9 @@ footer .footer-links a:hover { color: var(--accent); }
   .hero-visual { margin-top: 40px; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .showcase .container { grid-template-columns: 1fr; }
-  .showcase-image { order: 0; }
+  .showcase-content { order: 1; }  /* ✅ 추가 */
+  .showcase-image   { order: 2; }  /* ✅ 추가 */
   .indicator-section .container { grid-template-columns: 1fr; }
-  .indicator-visual { order: 0; }
   .app-preview .container { grid-template-columns: 1fr; text-align: center; }
   .app-preview-img { margin: 0 auto; }
   .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -984,7 +985,7 @@ footer .footer-links a:hover { color: var(--accent); }
 }
 
 @media (max-width: 768px) {
-  section { padding: 80px 0; }
+  section { padding: 60px 0; }
   .features-grid { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
   .reviews { grid-template-columns: 1fr; }
