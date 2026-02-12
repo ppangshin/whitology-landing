@@ -1484,6 +1484,7 @@ footer { background: var(--dark); }
 <script>
 // ===== TRACKING SYSTEM =====
 const STORAGE_KEY = 'whitology_analytics';
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbxoBgZdETCrpXv4IYRUymnBlqBYgvlWh78Go6FtzOBfI-I-hYS2y_qcU5wEiAl8e-Iw/exec';
 
 function getAnalytics() {
   try {
@@ -1493,6 +1494,16 @@ function getAnalytics() {
 
 function saveAnalytics(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// Google Sheet로 데이터 전송
+function sendToSheet(type, payload) {
+  fetch(SHEET_API, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ type, data: payload })
+  }).catch(() => {});
 }
 
 // Track page visit
@@ -1510,12 +1521,7 @@ function trackVisit() {
   };
   data.visits.push(visit);
   saveAnalytics(data);
-
-  // Send to admin (via broadcast channel for same-origin)
-  try {
-    const bc = new BroadcastChannel('whitology_analytics');
-    bc.postMessage({ type: 'visit', data: visit });
-  } catch(e) {}
+  sendToSheet('visit', visit);
 }
 
 // Track button clicks
@@ -1530,11 +1536,7 @@ function trackClick(buttonId) {
   };
   data.clicks.push(click);
   saveAnalytics(data);
-
-  try {
-    const bc = new BroadcastChannel('whitology_analytics');
-    bc.postMessage({ type: 'click', data: click });
-  } catch(e) {}
+  sendToSheet('click', click);
 
   // Meta Pixel tracking
   // if(typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: buttonId });
@@ -1583,11 +1585,7 @@ function submitForm() {
   };
   data.submissions.push(submission);
   saveAnalytics(data);
-
-  try {
-    const bc = new BroadcastChannel('whitology_analytics');
-    bc.postMessage({ type: 'submission', data: submission });
-  } catch(e) {}
+  sendToSheet('submission', submission);
 
   // Meta Pixel
   // if(typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'pre_order' });
