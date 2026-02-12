@@ -187,7 +187,7 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 .hero-actions {
   display: flex; gap: 14px; flex-wrap: wrap;
   animation: fadeInUp 0.8s 0.3s ease both;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
@@ -279,27 +279,27 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 }
 
 /* ===== SECTIONS COMMON ===== */
-section { padding: 60px 0; position: relative; }
+section { padding: 56px 0 64px; position: relative; }
 .section-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--accent);
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 .section-title {
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.25;
-  margin-bottom: 16px;
+  line-height: 1.3;
+  margin-bottom: 10px;
 }
 .section-desc {
-  font-size: 1.02rem;
-  color: rgba(255,255,255,0.80);
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
   max-width: 560px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -318,7 +318,7 @@ footer .footer-links a {
 
 /* ===== FEATURES ===== */
 .features { background: var(--dark-soft); }
-.features .container > .section-desc { margin-bottom: 64px; }
+.features .container > .section-desc { margin-bottom: 28px; }
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -328,7 +328,7 @@ footer .footer-links a {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 40px 32px;
+  padding: 28px 24px;
   transition: all 0.4s;
   position: relative; overflow: hidden;
 }
@@ -340,11 +340,11 @@ footer .footer-links a {
 .feature-card:hover { transform: translateY(-4px); border-color: rgba(0,212,170,0.3); }
 .feature-card:hover::before { opacity:1; }
 .feature-icon {
-  width: 56px; height: 56px;
-  border-radius: 16px;
+  width: 48px; height: 48px;
+  border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
 }
 .feature-icon.blue { background: rgba(58,123,213,0.15); }
 .feature-icon.green { background: rgba(0,212,170,0.15); }
@@ -363,14 +363,14 @@ footer .footer-links a {
 .showcase .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 48px;
   align-items: center;
 }
 .showcase-image img {
   width: 100%;
   border-radius: 24px;
 }
-.showcase-content .section-desc { margin-bottom: 32px; }
+.showcase-content .section-desc { margin-bottom: 20px; }
 .showcase-list {
   list-style: none;
   display: flex; flex-direction: column; gap: 16px;
@@ -392,7 +392,7 @@ footer .footer-links a {
 
 /* ===== PRODUCTS ===== */
 .products { background: var(--dark-soft); }
-.products .section-desc { margin-bottom: 56px; }
+.products .section-desc { margin-bottom: 28px; }
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -411,7 +411,7 @@ footer .footer-links a {
   object-fit: cover;
   border-bottom: 1px solid var(--glass-border);
 }
-.product-card-body { padding: 28px; }
+.product-card-body { padding: 20px 24px; }
 .product-tag {
   display: inline-block;
   padding: 4px 12px;
@@ -433,9 +433,18 @@ footer .footer-links a {
 }
 
 /* ===== HOW IT WORKS ===== */
+.how-it-works { background: var(--dark); }
 .how-it-works .section-title { text-align: center; }
 .how-it-works .section-label { text-align: center; }
-.how-it-works .section-desc { text-align: center; margin: 0 auto 64px; }
+.how-it-works .section-desc { text-align: center; margin: 0 auto 28px; }
+
+/* Section internal divider */
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--glass-border);
+  margin: 48px auto;
+}
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -477,12 +486,12 @@ footer .footer-links a {
 
 /* ===== APP PREVIEW ===== */
 .app-preview {
-  background: linear-gradient(180deg, var(--dark-soft) 0%, var(--dark) 100%);
+  background: var(--dark);
 }
 .app-preview .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 48px;
   align-items: center;
 }
 .app-preview-img {
@@ -492,8 +501,8 @@ footer .footer-links a {
   box-shadow: 0 40px 80px rgba(0,0,0,0.4);
 }
 .app-features {
-  display: flex; flex-direction: column; gap: 24px;
-  margin-top: 32px;
+  display: flex; flex-direction: column; gap: 18px;
+  margin-top: 24px;
 }
 .app-feature {
   display: flex; gap: 16px; align-items: flex-start;
@@ -515,7 +524,7 @@ footer .footer-links a {
   text-align: center;
   background: var(--dark);
 }
-.social-proof .section-desc { margin: 0 auto 56px; }
+.social-proof .section-desc { margin: 0 auto 28px; }
 .reviews {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -525,7 +534,7 @@ footer .footer-links a {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  padding: 32px;
+  padding: 24px;
   text-align: left;
   transition: all 0.3s;
 }
@@ -553,7 +562,7 @@ footer .footer-links a {
 
 /* ===== CTA ===== */
 .cta-section {
-  padding: 120px 0;
+  padding: 56px 0 64px;
   text-align: center;
   position: relative;
 }
@@ -564,7 +573,7 @@ footer .footer-links a {
 }
 .cta-section .container { position: relative; z-index: 2; }
 .cta-section .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
 }
 .cta-section .section-desc {
   margin: 0 auto 40px;
@@ -809,13 +818,13 @@ footer .footer-links a:hover { color: var(--accent); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin-top: 48px;
+  margin-top: 24px;
 }
 .routine-card {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 40px 36px;
+  padding: 28px 28px;
   position: relative;
   overflow: hidden;
   transition: all 0.4s;
@@ -879,14 +888,14 @@ footer .footer-links a:hover { color: var(--accent); }
 .indicator-section .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 48px;
   align-items: center;
 }
 .indicator-visual img {
   width: 100%;
   border-radius: 24px;
 }
-.indicator-content .section-desc { margin-bottom: 28px; }
+.indicator-content .section-desc { margin-bottom: 20px; }
 .indicator-steps {
   display: flex;
   flex-direction: column;
@@ -1006,7 +1015,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  section { padding: 52px 0; } /* 섹션 위아래 공간 살짝 줄임 */
+  section { padding: 40px 0 48px; }
 
   .features-grid,
   .products-grid,
@@ -1038,36 +1047,32 @@ footer .footer-links a:hover { color: var(--accent); }
     justify-content: center;
   }
 
-  /* ✅ 5분/93%/2주 간격: "space-between" 쓰면 양끝으로 벌어짐 → gap 중심 정렬 */
-  .hero-stats{
-  display: flex;
-  justify-content: center;   /* 가운데 정렬 */
-  gap: 16px;                 /* 간격 조절 */
-  margin-top: 22px;
-  flex-wrap: nowrap;
-}
-
-.stat-item{
-  flex: 0 0 auto;            /* ← 이게 핵심 */
-  text-align: center;
-}
-
-.stat-item .stat-number{
-  font-size: 1.6rem;         /* 숫자 살짝 축소 */
-  line-height: 1.1;
-}
-
-.stat-item .stat-label{
-  font-size: 0.72rem;        /* 설명 축소 */
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
+  /* 5분/93%/2주 간격 */
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 22px;
+    flex-wrap: nowrap;
+  }
+  .stat-item {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  .stat-item .stat-number {
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+  .stat-item .stat-label {
+    font-size: 0.72rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
 
   /* 이미지 과대 방지 */
   .app-preview-img,
   .showcase-image img,
-  .indicator-visual img{
+  .indicator-visual img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
@@ -1075,7 +1080,7 @@ footer .footer-links a:hover { color: var(--accent); }
   }
 
   /* Floating CTA */
-  .float-indicator{
+  .float-indicator {
     bottom: 24px;
     width: calc(100% - 48px);
     max-width: 360px;
@@ -1100,374 +1105,44 @@ footer .footer-links a:hover { color: var(--accent); }
 }
 
 /* ===== SECTION BACKGROUND FIX ===== */
-.app-preview{ background: var(--dark-soft); }
-.social-proof{ background: #0a0e17; }
-.cta-section{
-  background: linear-gradient(180deg, #0a0e17 0%, #121826 100%);
-}
-footer{ background: #070b13; }
+/* Order: Hero(dark) → Features(dark-soft) → Showcase(dark) → Products(dark-soft) → Routine+HIW(dark) → AppPreview(dark-soft) → Social(dark) → CTA(dark-soft) → Footer(dark) */
+.app-preview { background: var(--dark-soft); }
+.social-proof { background: var(--dark); }
+.cta-section { background: var(--dark-soft); }
+footer { background: var(--dark); }
 
+/* ===== GLOBAL OVERRIDES ===== */
+.section-title { line-height: 1.3; }
+.section-desc { line-height: 1.65; }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  section { padding: 60px 0; }
+.app-preview .container { text-align: left; }
+.app-feature { align-items: flex-start; }
+.app-feature h4,
+.app-feature p { text-align: left; }
 
-  .features-grid { grid-template-columns: 1fr; }
-  .products-grid { grid-template-columns: 1fr; }
-  .reviews { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; }
-  .routine-grid { grid-template-columns: 1fr; }
-
-  /* 85% / 4주 / 10분: 모바일에서 1줄 유지 */
-  .hero-stats{
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
-    margin-top: 24px;
-  }
-
-  .stat-item{
-    flex: 1;
-    text-align: center;
-  }
-
-  .stat-item .stat-number{
-    font-size: 1.9rem;
-  }
-
-  .stat-item .stat-label{
-    font-size: 0.85rem;
-  
-}
-
-
-  /* HERO 모바일 최적화 */
-  .hero {
-    min-height: auto;
-    padding-top: 100px;
-    padding-bottom: 40px;
-  }
-  .hero .container,
-  .hero-text {
-    text-align: center;
-  }
-
-  /* 히어로 이미지 모바일 */
-  .hero-inline-img {
-    display: block;
-  }
-  .hero-inline-img img {
-    max-width: 260px;
-    border-radius: 16px;
-    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
-  }
-  .hero-visual {
-    margin-top: 32px;
-    order: -1; /* 모바일에서 이미지를 텍스트 위로 */
-    display: none;
-  }
-  .hero-visual img {
-    max-width: 280px;
-    aspect-ratio: 1/1;
-    border-radius: 16px;
-    margin: 0 auto;
-  }
-  .hero-glow {
-    width: 250px;
-    height: 250px;
-  }
-
-  .hero h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem);
-    word-break: keep-all;
-  }
-  .hero-sub {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    word-break: keep-all;
-  }
+/* ===== PC HERO LAYOUT (1025px+) ===== */
+@media (min-width: 1025px) {
+  /* 버튼 + 스탯을 같은 너비로 묶어서 정렬 맞추기 */
   .hero-actions {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero .btn-primary,
-  .hero .btn-secondary {
-    width: 100%;
-    max-width: 360px;
-    height: 56px;
-    padding: 0;
-    justify-content: center;
-  }
-
-  /* 스탯: 가로 한 줄 유지 */
-  .hero-stats {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 22px;
-    flex-wrap: nowrap;
-  }
-  .stat-item {
-    flex: 1;
-    text-align: center;
-    min-width: 0;
-  }
-  .stat-item .stat-number {
-    font-size: 1.8rem;
-    line-height: 1.1;
-  }
-  .stat-item .stat-label {
-    font-size: 0.78rem;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  /* Trust Bar 모바일 */
-  .trust-bar {
-    padding: 28px 0;
-  }
-  .trust-bar .container {
-    gap: 16px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 8px;
-    flex-wrap: nowrap;
-  }
-  .trust-item {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    font-size: 0.85rem;
-  }
-
-  /* Section 타이틀 모바일 줄바꿈 최적화 */
-  .section-title {
-    word-break: keep-all;
-    font-size: clamp(1.5rem, 5.5vw, 2.2rem);
-  }
-  .section-desc {
-    word-break: keep-all;
-    font-size: 0.92rem;
-  }
-
-  /* Showcase 모바일 */
-  .showcase .container {
-    gap: 32px;
-  }
-  .showcase-image img {
-    max-width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 16px;
-  }
-  .showcase-list li {
-    font-size: 0.88rem;
-    word-break: keep-all;
-  }
-
-  /* Routine 카드 모바일 */
-  .routine-card {
-    padding: 28px 24px;
-  }
-  .routine-card h3 {
-    font-size: 1.15rem;
-  }
-
-  /* Indicator 모바일 */
-  .indicator-section .container {
-    gap: 32px;
-  }
-  .indicator-visual img {
-    max-width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 16px;
-  }
-  .indicator-step p {
-    word-break: keep-all;
-  }
-
-  /* App Preview 모바일: 왼쪽 정렬 */
-  .app-preview .container {
-    text-align: left;
-    gap: 40px;
-  }
-  .app-preview-img {
-    max-width: 100% !important;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 16px !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
-  }
-  .app-features {
-    align-items: flex-start;
-  }
-  .app-feature {
-    text-align: left;
-    align-items: flex-start;
-  }
-
-  /* CTA 모바일 */
-  .cta-section .section-title {
-    word-break: keep-all;
-  }
-
-  /* Review 모바일 */
-  .review-card {
-    padding: 24px;
-  }
-  .review-text {
-    font-size: 0.88rem;
-    word-break: keep-all;
-  }
-
-  /* Floating CTA 모바일 */
-  .float-indicator {
-    bottom: 24px;
-    width: calc(100% - 48px);
-    max-width: 360px;
-    font-size: 0.88rem;
-    height: 52px;
-  }
-
-  /* Modal 모바일 */
-  .modal {
-    padding: 32px 24px;
-    margin: 16px;
-  }
-
-  /* Feature 카드 모바일 */
-  .feature-card {
-    padding: 28px 24px;
-  }
-  .feature-card p {
-    word-break: keep-all;
-  }
-
-  /* Step, Product 모바일 */
-  .step p { word-break: keep-all; }
-  .product-card p { word-break: keep-all; }
-  .product-card-img {
-    aspect-ratio: 16/10;
-    object-fit: cover;
-  }
-  .products-grid {
-    gap: 16px;
-  }
-
-  /* Footer 패딩 - floating CTA 겹침 방지 */
-  footer {
-    padding-bottom: 100px;
-  }
-}
-
-/* 아주 작은 화면 */
-@media (max-width: 360px) {
-  .hero h1 { font-size: 1.7rem; }
-  .stat-item .stat-number { font-size: 1.5rem; }
-  .stat-item .stat-label { font-size: 0.72rem; }
-  .trust-item { font-size: 0.8rem; }
-}
-/* ===== SECTION BACKGROUND FIX ===== */
-
-/* AI가 코칭해드려요 섹션 */
-.app-preview{
-  background: var(--dark-soft);
-}
-
-/* 리뷰 섹션 */
-.social-proof{
-  background: #0a0e17;
-}
-
-/* CTA 섹션 */
-.cta-section{
-  background: linear-gradient(
-    180deg,
-    #0a0e17 0%,
-    #121826 100%
-  );
-}
-
-/* Footer는 더 어둡게 */
-footer{
-  background: #070b13;
-}
-  .stat-item{
-    flex: 1;
-    text-align: center;
-  }
-  .stat-item .stat-number{ font-size: 1.9rem; }
-  .stat-item .stat-label{ font-size: 0.85rem; }
-
-  /* 5) 섹션 제목/설명 줄바꿈 안정화 (부자연스러운 개행 완화) */
-  .section-title{ line-height: 1.25; }
-  .section-desc{ line-height: 1.65; }
-
-  /* 6) "AI가 코칭해드려요" 섹션: 왼쪽 정렬로 (사용자 요청) */
-  .app-preview .container{ text-align: left; }
-  .app-feature{ align-items: flex-start; }
-  .app-feature h4,
-  .app-feature p{ text-align: left; }
-
-  /* 7) 이미지 과대 방지 (아까처럼 커지는 문제 방지) */
-  .hero-visual img{
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  .app-preview-img{
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* 8) 플로팅 버튼: 폭 고정 + 가운데 정렬 */
-  .float-indicator{
-    width: calc(100% - 36px);
-    max-width: 360px;
-    height: 54px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border-radius: 54px;
+    gap: 14px;
+    flex-wrap: nowrap;
+    margin-bottom: 32px;
   }
 
-/* ===== TEXT GAP REDUCE (GLOBAL) ===== */
-
-.section p,
-.hero p{
-  margin-bottom: 16px;   /* 기본 24~32px → 16px로 축소 */
-}
-
-.section h2,
-.section h3{
-  margin-bottom: 12px;   /* 제목 아래 간격도 같이 줄임 */
-}
-
-/* ===== PC 정렬(버튼 끝 ↔ 스탯 끝 맞추기) ===== */
-@media (min-width: 1025px){
-
-  /* 버튼 2개를 좌/우 끝으로 벌려서 라인 기준 만들기 */
-  .hero-actions{
-    width: 100%;
-    justify-content: space-between; /* ← 왼쪽/오른쪽 끝 */
-    flex-wrap: nowrap;              /* PC에서는 한 줄 유지 */
-    margin-bottom: 56px;            /* 버튼 ↔ 스탯 세로 간격(원하면 48~72로 조절) */
+  /* 스탯을 버튼 영역과 동일한 너비로 맞추고 양끝 정렬 */
+  .hero-stats {
+    display: flex;
+    /* 버튼 2개의 총 너비(min-width 220px × 2 + gap 14px = ~454px)에 맞춤 */
+    width: calc(220px + 14px + 220px);
+    justify-content: space-between;
+    gap: 0;
+    margin-top: 0;
   }
 
-  /* 스탯 3개를 좌/중/우로 벌려서 버튼 라인과 맞추기 */
-  .hero-stats{
-    width: 100%;
-    justify-content: space-between; /* ← 빨간선처럼 양끝 맞춤 */
-    gap: 0;                         /* space-between이면 gap은 0이 깔끔 */
-    margin-top: 0;                  /* 위에서 margin-bottom으로 간격 관리 */
-  }
-
-  .stat-item{
-    flex: 0 0 auto;                 /* 늘어나지 않게 */
+  .stat-item {
+    flex: 0 0 auto;
+    text-align: center;
   }
 }
 
@@ -1495,7 +1170,7 @@ footer{
       <div class="hero-inline-img">
         <img src="images/hero-device.jpeg" alt="Whitology 디바이스">
       </div>
-      <p class="hero-sub">서울대 치과 전문의가 검수하고<br>국내에서 제조한 LED 디바이스로<br>미백부터 잇몸 건강까지 집에서 케어하세요!</p>
+      <p class="hero-sub">서울대 치과 전문의가 검수하고<br>국내에서 제조한 LED 디바이스로<br>미백부터 잇몸 건강까지 집에서 케어 할 수 있어요!</p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="trackClick('hero_cta_primary'); openModal();">
           <span>✨</span> 치약 2개 무료로 받기
@@ -1530,7 +1205,7 @@ footer{
 <section class="features" id="features">
   <div class="container">
     <div class="section-label reveal">WHY WHITOLOGY</div>
-    <div class="section-title reveal">다른 제품과<br>차원이 다른 이유</div>
+    <div class="section-title reveal">차원이 다른 Whitology</div>
     <div class="section-desc reveal">서울대 치과 전문의가 직접 검수한 국내 제조 디바이스.<br>AI와 LED 기술로 매일 관리하는 새로운 습관을 만듭니다.</div>
     <div class="features-grid">
       <div class="feature-card reveal">
@@ -1561,7 +1236,7 @@ footer{
     <div class="showcase-content">
       <div class="section-label reveal">SMART DEVICE</div>
       <div class="section-title reveal">하루 5분,<br>입에 물기만 하세요</div>
-      <p class="section-desc reveal">의료기기급 LED 디바이스와 전용 치약의 시너지.<br>칫솔질 후 5분이면 충분합니다.</p>
+      <p class="section-desc reveal">LED 디바이스와 전용 치약의 시너지,<br>칫솔질 후 5분이면 충분합니다.</p>
       <ul class="showcase-list reveal">
         <li><span class="check">✓</span>미백 모드 + 잇몸 케어 모드 선택</li>
         <li><span class="check">✓</span>앱 연동으로 사용 시간 자동 트래킹</li>
@@ -1607,7 +1282,7 @@ footer{
   </div>
 </section>
 
-<!-- 2가지 케어 모드 -->
+<!-- 케어 가이드 (듀얼 모드 + 사용 방법) -->
 <section class="routine-section">
   <div class="container">
     <div class="section-label reveal">DUAL CARE MODE</div>
@@ -1627,15 +1302,13 @@ footer{
         <div class="routine-duration">⏱ 5분</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- How It Works -->
-<section class="how-it-works">
-  <div class="container">
-    <div class="section-label reveal">HOW IT WORKS</div>
-    <div class="section-title reveal">간편하게 사용해 보세요.</div>
-    <p class="section-desc reveal">사진 촬영하고, 2주 뒤 달라진 나를 만나보세요.</p>
+    <!-- 섹션 내 구분선 -->
+    <div class="section-divider"></div>
+
+    <div class="section-label reveal" style="text-align:center;">HOW IT WORKS</div>
+    <div class="section-title reveal" style="text-align:center;">간편하게 사용해 보세요.</div>
+    <p class="section-desc reveal" style="text-align:center; margin: 0 auto 28px;">사진 촬영하고, 2주 뒤 달라진 나를 만나보세요.</p>
     <div class="steps">
       <div class="step reveal">
         <div class="step-num">1</div>
