@@ -1218,6 +1218,31 @@ footer .footer-links a:hover { color: var(--accent); }
   .stat-item .stat-label { font-size: 0.72rem; }
   .trust-item { font-size: 0.8rem; }
 }
+/* ===== SECTION BACKGROUND FIX ===== */
+
+/* AI가 코칭해드려요 섹션 */
+.app-preview{
+  background: var(--dark-soft);
+}
+
+/* 리뷰 섹션 */
+.social-proof{
+  background: #0a0e17;
+}
+
+/* CTA 섹션 */
+.cta-section{
+  background: linear-gradient(
+    180deg,
+    #0a0e17 0%,
+    #121826 100%
+  );
+}
+
+/* Footer는 더 어둡게 */
+footer{
+  background: #070b13;
+}
 
 </style>
 </head>
@@ -1238,15 +1263,15 @@ footer .footer-links a:hover { color: var(--accent); }
 <section class="hero">
   <div class="container">
     <div class="hero-text">
-      <div class="hero-badge">서울대 치과 전문의 검수</div>
-      <h1>하루 5분,<br><span class="highlight">미백 & 잇몸케어</span></h1>
+      <div class="hero-badge">서울대 치과 전문의가 검수한 제품</div>
+      <h1>하루 5분으로 완성하는<br><span class="highlight">미백 & 잇몸케어</span></h1>
       <div class="hero-inline-img">
         <img src="images/hero-device.jpeg" alt="Whitology 디바이스">
       </div>
       <p class="hero-sub">서울대 치과 전문의가 검수하고<br>국내에서 제조한 LED 디바이스로<br>미백부터 잇몸 건강까지 집에서 케어하세요!</p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="trackClick('hero_cta_primary'); openModal();">
-          <span>✨</span> 치약 2개 받기
+          <span>✨</span> 치약 2개 무료로 받기
         </button>
         <a href="#how" class="btn-secondary" onclick="trackClick('hero_cta_secondary');">
           자세히 알아보기
@@ -1559,7 +1584,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 <!-- Floating CTA -->
 <a class="float-indicator" onclick="trackClick('floating_cta'); openModal();">
-  ✨ 치약 2개 무료 받기
+  ✨ 치약 2개 무료로 받기
 </a>
 
 <!-- Modal -->
