@@ -244,7 +244,8 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 .hero-visual img {
   width: 100%; 
   max-width: 480px;
-  height: 480px;
+  height: auto;
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 20px;
 }
@@ -255,6 +256,23 @@ nav .container { display:flex; align-items:center; justify-content:space-between
   border-radius: 50%;
   filter: blur(60px);
   z-index: 1;
+}
+
+/* ===== HERO INLINE IMAGE ===== */
+.hero-inline-img {
+  display: none;
+  margin: 24px auto 28px;
+  text-align: center;
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+.hero-inline-img img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
 /* ===== SECTIONS COMMON ===== */
@@ -699,9 +717,204 @@ footer .footer-links a:hover { color: var(--accent); }
   50%     { transform: translateX(-50%) translateY(-6px); }
 }
 
+/* ===== PRICE BLOCK ===== */
+.price-block {
+  text-align: center;
+  margin: 28px auto 20px;
+}
+.price-compare {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+}
+.price-old {
+  text-decoration: line-through;
+  color: var(--coral);
+}
+.price-main {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+.price-main small {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.price-main strong {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.price-main span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+@media (max-width: 768px) {
+  .price-main strong {
+    font-size: 2.2rem;
+  }
+}
+
+/* ===== TRUST BADGE BAR ===== */
+.trust-bar {
+  padding: 40px 0;
+  background: var(--dark-soft);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+.trust-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.trust-item strong {
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* ===== ROUTINE SECTION ===== */
+.routine-section {
+  background: var(--dark);
+  overflow: hidden;
+}
+.routine-section .section-desc { margin-bottom: 0; }
+.routine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.routine-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.routine-card:hover {
+  border-color: rgba(0,212,170,0.25);
+  transform: translateY(-4px);
+}
+.routine-card::before {
+  content:'';
+  position: absolute; top:0; left:0; right:0; height:3px;
+}
+.routine-card.morning::before {
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+}
+.routine-card.night::before {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+.routine-time {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.routine-card.morning .routine-time { color: #ffd700; }
+.routine-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.routine-card p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+}
+.routine-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(0,212,170,0.1);
+  color: var(--accent);
+}
+.routine-card.morning .routine-duration {
+  background: rgba(255,215,0,0.1);
+  color: #ffd700;
+}
+
+/* ===== INDICATOR SECTION ===== */
+.indicator-section {
+  background: var(--dark-soft);
+  overflow: hidden;
+}
+.indicator-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.indicator-visual img {
+  width: 100%;
+  border-radius: 24px;
+}
+.indicator-content .section-desc { margin-bottom: 28px; }
+.indicator-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.indicator-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.indicator-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0,212,170,0.15);
+  border: 1px solid rgba(0,212,170,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.indicator-step p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  padding-top: 4px;
+}
+
 /* ===== OVERRIDES (CUSTOM) ===== */
 .float-indicator{
-  width: 260px;
+  width: 300px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -731,7 +944,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 /* 히어로 버튼 길이 통일 */
 .hero .btn-primary{
-  min-width: 220px;
+  min-width: 300px;
   justify-content: center;
 }
 .hero .btn-secondary{
@@ -742,7 +955,8 @@ footer .footer-links a:hover { color: var(--accent); }
 @media (max-width: 768px) {
   .hero .btn-primary,
   .hero .btn-secondary{
-    width: 260px;
+    width: 100%;
+    max-width: 360px;
     height: 56px;
     padding: 0;
     justify-content: center;
@@ -759,84 +973,250 @@ footer .footer-links a:hover { color: var(--accent); }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .showcase .container { grid-template-columns: 1fr; }
   .showcase-image { order: -1; }
+  .indicator-section .container { grid-template-columns: 1fr; }
+  .indicator-visual { order: -1; }
   .app-preview .container { grid-template-columns: 1fr; text-align: center; }
   .app-preview-img { margin: 0 auto; }
   .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .steps::before { display: none; }
 }
+
 @media (max-width: 768px) {
   section { padding: 80px 0; }
   .features-grid { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
   .reviews { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; gap: 16px; }
-  .hero-actions { flex-direction: column; align-items: center; }
-}
+  .routine-grid { grid-template-columns: 1fr; }
 
-/* ===== MOBILE FIX ===== */
-@media (max-width: 768px){
-
-  /* 1) HERO는 중앙 정렬 유지 (원상복귀) */
+  /* HERO 모바일 최적화 */
+  .hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
   .hero .container,
-  .hero-text{
+  .hero-text {
     text-align: center;
   }
 
-  /* 2) 버튼: 모바일에서 통일된 폭 + 가운데 정렬 */
-  .hero-actions{
+  /* 히어로 이미지 모바일 */
+  .hero-inline-img {
+    display: block;
+  }
+  .hero-inline-img img {
+    max-width: 260px;
+    border-radius: 16px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+  }
+  .hero-visual {
+    margin-top: 32px;
+    order: -1; /* 모바일에서 이미지를 텍스트 위로 */
+    display: none;
+  }
+  .hero-visual img {
+    max-width: 280px;
+    aspect-ratio: 1/1;
+    border-radius: 16px;
+    margin: 0 auto;
+  }
+  .hero-glow {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    word-break: keep-all;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .hero-actions {
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
-
   .hero .btn-primary,
-  .hero .btn-secondary{
+  .hero .btn-secondary {
     width: 100%;
     max-width: 360px;
+    height: 56px;
+    padding: 0;
     justify-content: center;
   }
 
-  /* 3) 85% / 4주 / 10분: 한 줄(가로) 유지 */
-  .hero-stats{
+  /* 스탯: 가로 한 줄 유지 */
+  .hero-stats {
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
     margin-top: 22px;
     flex-wrap: nowrap;
   }
-
-  .stat-item{
+  .stat-item {
     flex: 1;
     text-align: center;
     min-width: 0;
   }
-
-  .stat-item .stat-number{
-    font-size: 1.8rem;      /* 모바일에서 너무 크면 줄임 */
+  .stat-item .stat-number {
+    font-size: 1.8rem;
     line-height: 1.1;
   }
-
-  .stat-item .stat-label{
-    font-size: 0.82rem;
+  .stat-item .stat-label {
+    font-size: 0.78rem;
     line-height: 1.2;
-    white-space: nowrap;    /* '사용자 효과 체감' 줄바꿈 방지 */
+    white-space: nowrap;
   }
 
-  /* 4) "AI가 코칭해드려요" 섹션(= app-preview)만 왼쪽 정렬 */
-  .app-preview .container{
+  /* Trust Bar 모바일 */
+  .trust-bar {
+    padding: 28px 0;
+  }
+  .trust-bar .container {
+    gap: 16px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    flex-wrap: nowrap;
+  }
+  .trust-item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    font-size: 0.85rem;
+  }
+
+  /* Section 타이틀 모바일 줄바꿈 최적화 */
+  .section-title {
+    word-break: keep-all;
+    font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+  }
+  .section-desc {
+    word-break: keep-all;
+    font-size: 0.92rem;
+  }
+
+  /* Showcase 모바일 */
+  .showcase .container {
+    gap: 32px;
+  }
+  .showcase-image img {
+    max-width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .showcase-list li {
+    font-size: 0.88rem;
+    word-break: keep-all;
+  }
+
+  /* Routine 카드 모바일 */
+  .routine-card {
+    padding: 28px 24px;
+  }
+  .routine-card h3 {
+    font-size: 1.15rem;
+  }
+
+  /* Indicator 모바일 */
+  .indicator-section .container {
+    gap: 32px;
+  }
+  .indicator-visual img {
+    max-width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .indicator-step p {
+    word-break: keep-all;
+  }
+
+  /* App Preview 모바일: 왼쪽 정렬 */
+  .app-preview .container {
     text-align: left;
+    gap: 40px;
   }
-
-  .app-features{
+  .app-preview-img {
+    max-width: 100% !important;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  }
+  .app-features {
+    align-items: flex-start;
+  }
+  .app-feature {
+    text-align: left;
     align-items: flex-start;
   }
 
-  .app-feature{
-    text-align: left;
-    align-items: flex-start;
+  /* CTA 모바일 */
+  .cta-section .section-title {
+    word-break: keep-all;
   }
 
+  /* Review 모바일 */
+  .review-card {
+    padding: 24px;
+  }
+  .review-text {
+    font-size: 0.88rem;
+    word-break: keep-all;
+  }
+
+  /* Floating CTA 모바일 */
+  .float-indicator {
+    bottom: 24px;
+    width: calc(100% - 48px);
+    max-width: 360px;
+    font-size: 0.88rem;
+    height: 52px;
+  }
+
+  /* Modal 모바일 */
+  .modal {
+    padding: 32px 24px;
+    margin: 16px;
+  }
+
+  /* Feature 카드 모바일 */
+  .feature-card {
+    padding: 28px 24px;
+  }
+  .feature-card p {
+    word-break: keep-all;
+  }
+
+  /* Step, Product 모바일 */
+  .step p { word-break: keep-all; }
+  .product-card p { word-break: keep-all; }
+  .product-card-img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+  }
+  .products-grid {
+    gap: 16px;
+  }
+
+  /* Footer 패딩 - floating CTA 겹침 방지 */
+  footer {
+    padding-bottom: 100px;
+  }
+}
+
+/* 아주 작은 화면 */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.7rem; }
+  .stat-item .stat-number { font-size: 1.5rem; }
+  .stat-item .stat-label { font-size: 0.72rem; }
+  .trust-item { font-size: 0.8rem; }
 }
 
 </style>
@@ -858,12 +1238,15 @@ footer .footer-links a:hover { color: var(--accent); }
 <section class="hero">
   <div class="container">
     <div class="hero-text">
-      <div class="hero-badge">2026 사전 예약중</div>
-      <h1>집에서 하는<br><span class="highlight">치과급 구강 케어</span></h1>
-      <p class="hero-sub">AI가 당신의 치아를 분석하고, LED 디바이스가 직접 개선합니다.<br>4주 만에 눈에 보이는 변화를 경험하세요.</p>
+      <div class="hero-badge">서울대 치과 전문의 검수 완료</div>
+      <h1>하루 5분,<br><span class="highlight">치과급 미백 & 잇몸케어</span></h1>
+      <p class="hero-sub">서울대 치과 전문의가 검수한 국내 제조 LED 디바이스로<br>미백부터 잇몸케어까지, 내게 맞는 케어를 하루 5분에.<br>4주 만에 눈에 보이는 변화를 경험하세요.</p>
+      <div class="hero-inline-img">
+        <img src="images/hero-device.jpeg" alt="Whitology 디바이스">
+      </div>
       <div class="hero-actions">
         <button class="btn-primary" onclick="trackClick('hero_cta_primary'); openModal();">
-          <span>✨</span> 사전 예약 신청
+          <span>🦷</span> 하루 5분, 치과급 미백&잇몸케어
         </button>
         <a href="#how" class="btn-secondary" onclick="trackClick('hero_cta_secondary');">
           자세히 알아보기
@@ -879,7 +1262,7 @@ footer .footer-links a:hover { color: var(--accent); }
           <div class="stat-label">평균 변화 확인</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">10분</div>
+          <div class="stat-number">5분</div>
           <div class="stat-label">하루 케어 시간</div>
         </div>
       </div>
@@ -891,12 +1274,34 @@ footer .footer-links a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- Trust Badge Bar -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-icon">🏥</div>
+      <div><strong>서울대 치과 전문의</strong> 검수</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🇰🇷</div>
+      <div><strong>100% 국내 제조</strong> 디바이스</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">⏱️</div>
+      <div>하루 <strong>단 5분</strong>이면 끝</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎁</div>
+      <div>예약 시 <strong>전용 제제 2개</strong> 추가 증정</div>
+    </div>
+  </div>
+</div>
+
 <!-- Features -->
 <section class="features" id="features">
   <div class="container">
     <div class="section-label reveal">WHY WHITOLOGY</div>
-    <div class="section-title reveal">다른 미백 제품과<br>무엇이 다른가요?</div>
-    <div class="section-desc reveal">일회성 제품이 아닌, AI와 LED 기술로 매일 관리하는 새로운 습관을 만듭니다.</div>
+    <div class="section-title reveal">시중 저가 제품과는<br>차원이 다릅니다</div>
+    <div class="section-desc reveal">서울대 치과 전문의가 직접 검수한 국내 제조 디바이스. 일회성 미백이 아닌, AI와 LED 기술로 매일 관리하는 새로운 습관을 만듭니다.</div>
     <div class="features-grid">
       <div class="feature-card reveal">
         <div class="feature-icon blue">🔬</div>
@@ -905,13 +1310,13 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon green">💡</div>
-        <h3>의료급 LED 디바이스</h3>
-        <p>치과에서 사용하는 것과 동일한 파장의 LED 기술. 미백과 잇몸 케어를 하나의 디바이스로 해결합니다.</p>
+        <h3>국내 제조 의료급 LED</h3>
+        <p>시중 중국산 디바이스와 다릅니다. 국내에서 직접 설계·제조한 의료급 LED 기술로, 미백과 잇몸 케어를 하나로 해결합니다.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon violet">📊</div>
-        <h3>맞춤형 케어 플랜</h3>
-        <p>AI 분석 결과를 바탕으로 나만의 4주 케어 플랜이 자동 생성됩니다. Before-After로 변화를 수치로 확인하세요.</p>
+        <h3>서울대 전문의 검수</h3>
+        <p>서울대학교 치과 전문의가 직접 검수한 케어 프로토콜. 안전성과 효과를 모두 잡은 신뢰할 수 있는 솔루션입니다.</p>
       </div>
     </div>
   </div>
@@ -925,12 +1330,13 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
     <div class="showcase-content">
       <div class="section-label reveal">SMART DEVICE</div>
-      <div class="section-title reveal">하루 10분,<br>입에 물기만 하세요</div>
-      <p class="section-desc reveal">의료급 LED와 전용 치약의 시너지. 칫솔질 후 10분이면 충분합니다.</p>
+      <div class="section-title reveal">하루 5분,<br>입에 물기만 하세요</div>
+      <p class="section-desc reveal">국내 제조 의료급 LED와 전용 제제의 시너지. 칫솔질 후 5분이면 충분합니다.</p>
       <ul class="showcase-list reveal">
-        <li><span class="check">✓</span>미백 모드 + 잇몸 케어 모드 자동 전환</li>
+        <li><span class="check">✓</span>미백 모드 · 잇몸 케어 모드 자유 전환</li>
         <li><span class="check">✓</span>앱 연동으로 사용 시간 자동 트래킹</li>
         <li><span class="check">✓</span>무선 충전 & 방수 설계</li>
+        <li><span class="check">✓</span>100% 국내 설계·제조 디바이스</li>
       </ul>
     </div>
   </div>
@@ -940,7 +1346,7 @@ footer .footer-links a:hover { color: var(--accent); }
 <section class="products" id="products">
   <div class="container">
     <div class="section-label reveal">CARE SOLUTIONS</div>
-    <div class="section-title reveal">3가지 전용 치약</div>
+    <div class="section-title reveal">3가지 전용 제제</div>
     <p class="section-desc reveal">AI가 분석한 결과에 따라 최적의 제제를 추천해드립니다.</p>
     <div class="products-grid">
       <div class="product-card reveal">
@@ -971,6 +1377,57 @@ footer .footer-links a:hover { color: var(--accent); }
   </div>
 </section>
 
+<!-- 2가지 케어 모드 -->
+<section class="routine-section">
+  <div class="container">
+    <div class="section-label reveal">DUAL CARE MODE</div>
+    <div class="section-title reveal">미백도, 잇몸케어도<br>내가 원할 때 바로</div>
+    <p class="section-desc reveal">2가지 모드를 자유롭게 선택하세요. 하루 5분, 내 상태에 맞는 케어를 원하는 시간에.</p>
+    <div class="routine-grid">
+      <div class="routine-card morning reveal">
+        <div class="routine-time">🦷 MODE 1</div>
+        <h3>잇몸 집중 케어</h3>
+        <p>Gum Care 제제 + LED 잇몸 모드로 잇몸 염증을 진정시키고 건강한 잇몸 상태를 유지합니다. 잇몸이 약하거나 시린 분께 추천.</p>
+        <div class="routine-duration">⏱ 5분</div>
+      </div>
+      <div class="routine-card night reveal">
+        <div class="routine-time">✨ MODE 2</div>
+        <h3>미백 집중 케어</h3>
+        <p>Whitening 제제 + LED 미백 모드로 치아 착색을 집중 개선합니다. 커피·와인 등 착색이 신경 쓰이는 분께 추천.</p>
+        <div class="routine-duration">⏱ 5분</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 인디케이터 체크 -->
+<section class="indicator-section">
+  <div class="container">
+    <div class="indicator-visual reveal">
+      <img src="images/product-set.jpeg" alt="Whitology 인디케이터">
+    </div>
+    <div class="indicator-content">
+      <div class="section-label reveal">DAILY CHECK</div>
+      <div class="section-title reveal">매일 달라지는 변화,<br>직접 확인하세요</div>
+      <p class="section-desc reveal">디바이스 뒷면의 컬러 인디케이터가 매일의 변화를 눈으로 보여줍니다. 사진을 찍어 기록하면 AI가 변화를 분석해드려요.</p>
+      <div class="indicator-steps reveal">
+        <div class="indicator-step">
+          <div class="indicator-num">1</div>
+          <p>케어 후 제품 뒷면의 인디케이터를 확인하세요</p>
+        </div>
+        <div class="indicator-step">
+          <div class="indicator-num">2</div>
+          <p>매일 인디케이터 사진을 앱에서 촬영하세요</p>
+        </div>
+        <div class="indicator-step">
+          <div class="indicator-num">3</div>
+          <p>AI가 매일의 변화를 분석하고 케어 플랜을 최적화합니다</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- How It Works -->
 <section class="how-it-works">
   <div class="container">
@@ -990,13 +1447,13 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
-        <h4>매일 10분 케어</h4>
-        <p>LED 디바이스 + 전용 치약으로 하루 10분 홈케어 실행</p>
+        <h4>매일 5분 케어</h4>
+        <p>LED 디바이스 + 전용 제제로 하루 5분 홈케어 실행</p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
         <h4>변화 확인</h4>
-        <p>주간 재촬영으로 Before-After 변화를 수치로 확인</p>
+        <p>인디케이터 촬영으로 매일 변화를 수치로 확인</p>
       </div>
     </div>
   </div>
@@ -1017,7 +1474,7 @@ footer .footer-links a:hover { color: var(--accent); }
           <div class="app-feature-icon">🎯</div>
           <div>
             <h4>데일리 미션</h4>
-            <p>칫솔질 인증, 디바이스 사용, 가글 등 미션 수행</p>
+            <p>칫솔질 인증, 디바이스 사용, 인디케이터 촬영 미션</p>
           </div>
         </div>
         <div class="app-feature reveal">
@@ -1055,7 +1512,7 @@ footer .footer-links a:hover { color: var(--accent); }
     <div class="reviews">
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"치과 미백 30만원 쓰려다가 이거 먼저 써봤는데, 2주 만에 주변에서 티 나냐고 물어봤어요. 앱이 매일 알림 줘서 까먹지 않고 할 수 있었어요."</p>
+        <p class="review-text">"치과 미백 30만원 쓰려다가 이거 먼저 써봤는데, 2주 만에 주변에서 티 나냐고 물어봤어요. 하루 5분이라 부담도 없고요."</p>
         <div class="review-author">
           <div class="review-avatar">J</div>
           <div>
@@ -1066,7 +1523,7 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <div class="review-card reveal">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"매일 10분이라 부담 없고, 앱에서 변화 그래프 보는 재미가 있어요. 커피 많이 마시는데 확실히 누런 기가 줄었습니다."</p>
+        <p class="review-text">"매일 5분이라 부담 없고, 인디케이터로 변화 보는 재미가 있어요. 커피 많이 마시는데 확실히 누런 기가 줄었습니다."</p>
         <div class="review-author">
           <div class="review-avatar">K</div>
           <div>
@@ -1077,7 +1534,7 @@ footer .footer-links a:hover { color: var(--accent); }
       </div>
       <div class="review-card reveal">
         <div class="review-stars">★★★★☆</div>
-        <p class="review-text">"잇몸이 약해서 걱정했는데 잇몸 케어 모드 쓰니까 잇몸 점수가 진짜 올라갔어요. AI 분석이 생각보다 정확해서 놀랐습니다."</p>
+        <p class="review-text">"잇몸이 약해서 걱정했는데 잇몸 케어 모드 쓰니까 확실히 달라졌어요. 국내 제조라 믿음이 갑니다."</p>
         <div class="review-author">
           <div class="review-avatar">L</div>
           <div>
@@ -1094,11 +1551,15 @@ footer .footer-links a:hover { color: var(--accent); }
 <section class="cta-section">
   <div class="container">
     <div class="section-label reveal">LIMITED OFFER</div>
-    <div class="section-title reveal">지금 사전 예약하면<br><span style="color:var(--accent);">30% 할인</span></div>
-    <p class="section-desc reveal">정식 출시 전, 한정 수량으로 사전 예약을 진행합니다.<br>먼저 신청하신 분께 특별 가격을 드려요.</p>
+    <div class="section-title reveal">지금 사전 예약하면<br><span style="color:var(--accent);">전용 제제 2개 추가 증정</span></div>
+    <div class="price-block reveal">
+      <div class="price-compare">치과 미백 시술 <span class="price-old">30만원~</span></div>
+      <div class="price-main"><small>사전 예약가</small> <strong>49,900</strong><span>원</span></div>
+    </div>
+    <p class="section-desc reveal" style="margin:0 auto 40px;">정식 출시 전, 한정 수량 사전 예약 진행 중입니다.<br>먼저 신청하신 분께 전용 제제 2개를 추가로 드려요.</p>
     <div class="cta-group reveal">
       <button class="btn-primary" onclick="trackClick('bottom_cta'); openModal();">
-        <span>🎁</span> 사전 예약 신청하기
+        <span>🦷</span> 하루 5분, 치과급 미백&잇몸케어
       </button>
     </div>
     <p class="cta-note reveal">* 사전 예약 시 결제가 발생하지 않습니다.</p>
@@ -1120,7 +1581,7 @@ footer .footer-links a:hover { color: var(--accent); }
 
 <!-- Floating CTA -->
 <a class="float-indicator" onclick="trackClick('floating_cta'); openModal();">
-  🦷 사전 예약 30% 할인
+  ✨ 사전 예약 시 치약 2개 무료 증정
 </a>
 
 <!-- Modal -->
@@ -1129,7 +1590,7 @@ footer .footer-links a:hover { color: var(--accent); }
     <button class="modal-close" onclick="closeModal()">×</button>
     <div id="modal-form-view">
       <h2>사전 예약 신청</h2>
-      <p>정식 출시 시 30% 할인 + 전용 치약 1개 무료 증정!<br>신청 후 결제는 발생하지 않습니다.</p>
+      <p><span style="color:rgba(255,255,255,0.5);text-decoration:line-through;font-size:0.85rem;">치과 미백 30만원~</span><br><strong style="font-size:1.4rem;">49,900원</strong> + <strong style="color:var(--accent);">전용 제제 2개 무료 추가 증정!</strong><br><span style="font-size:0.82rem;color:rgba(255,255,255,0.5);">신청 후 결제는 발생하지 않습니다.</span></p>
       <div class="modal-form">
         <input type="text" id="userName" placeholder="이름">
         <input type="tel" id="userPhone" placeholder="연락처 (010-0000-0000)">
@@ -1139,7 +1600,7 @@ footer .footer-links a:hover { color: var(--accent); }
     </div>
     <div id="modal-success" class="modal-success">
       <h2>🎉 신청 완료!</h2>
-      <p style="margin-top:16px;">사전 예약이 완료되었습니다.<br>출시 시 입력하신 연락처로 안내드릴게요.<br><br><strong style="color:var(--accent);">30% 할인 + 전용 제제 1개 무료!</strong></p>
+      <p style="margin-top:16px;">사전 예약이 완료되었습니다.<br>출시 시 입력하신 연락처로 안내드릴게요.<br><br><strong style="color:var(--accent);">전용 제제 2개 무료 추가 증정!</strong></p>
       <button class="btn-primary" style="margin-top:24px;width:100%;justify-content:center;" onclick="closeModal();">확인</button>
     </div>
   </div>
