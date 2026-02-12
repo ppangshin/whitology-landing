@@ -432,6 +432,7 @@ footer .footer-links a {
 }
 
 /* ===== HOW IT WORKS ===== */
+.how-it-works { background: var(--dark); }
 .how-it-works .section-title { text-align: center; }
 .how-it-works .section-label { text-align: center; }
 .how-it-works .section-desc { text-align: center; margin: 0 auto 64px; }
@@ -476,7 +477,7 @@ footer .footer-links a {
 
 /* ===== APP PREVIEW ===== */
 .app-preview {
-  background: linear-gradient(180deg, var(--dark-soft) 0%, var(--dark) 100%);
+  background: var(--dark-soft);
 }
 .app-preview .container {
   display: grid;
@@ -555,6 +556,7 @@ footer .footer-links a {
   padding: 120px 0;
   text-align: center;
   position: relative;
+  background: var(--dark-soft);
 }
 .cta-section::before {
   content:'';
@@ -1220,69 +1222,75 @@ footer .footer-links a:hover { color: var(--accent); }
   .stat-item .stat-label { font-size: 0.72rem; }
   .trust-item { font-size: 0.8rem; }
 }
-/* ===== SECTION BACKGROUND FIX ===== */
+/* ===== SECTION BACKGROUND ALTERNATION ===== */
+/*
+  Section order & alternating backgrounds:
+  1. Hero          → dark (default)
+  2. Features      → dark-soft  ✓ (set in .features)
+  3. Showcase      → dark       ✓ (default)
+  4. Products      → dark-soft  ✓ (set in .products)
+  5. Routine       → dark       ✓ (set in .routine-section)
+  6. Indicator     → dark-soft  ✓ (set in .indicator-section)
+  7. How It Works  → dark       ✓ (default)
+  8. App Preview   → dark-soft  ✓
+  9. Social Proof  → dark       ✓
+  10. CTA (Limited)→ dark-soft  ← FIX: was same as social-proof
+  11. Footer       → dark
+*/
 
-/* AI가 코칭해드려요 섹션 */
-.app-preview{
+.app-preview {
   background: var(--dark-soft);
 }
 
-/* 리뷰 섹션 */
-.social-proof{
-  background: #0a0e17;
+.social-proof {
+  background: var(--dark);
 }
 
-/* CTA 섹션 */
-.cta-section{
-  background: linear-gradient(
-    180deg,
-    #0a0e17 0%,
-    #121826 100%
-  );
+.cta-section {
+  background: var(--dark-soft);
 }
 
-/* Footer는 더 어둡게 */
-footer{
-  background: #070b13;
+footer {
+  background: var(--dark);
 }
 
-  /* 4) 85% / 4주 / 10분: 모바일에서 1줄 유지 */
-  .hero-stats{
+/* ===== GLOBAL LAYOUT CONSISTENCY ===== */
+/* Ensure section title line-height is consistent */
+.section-title { line-height: 1.3; }
+.section-desc { line-height: 1.7; }
+
+/* App preview: left-aligned content for all viewports */
+.app-preview .container { text-align: left; }
+.app-feature { align-items: flex-start; }
+.app-feature h4,
+.app-feature p { text-align: left; }
+
+/* ===== MOBILE OVERRIDES (was accidentally outside media query) ===== */
+@media (max-width: 768px) {
+  .hero-stats {
     flex-direction: row;
     justify-content: space-between;
     gap: 8px;
     margin-top: 24px;
   }
-  .stat-item{
+  .stat-item {
     flex: 1;
     text-align: center;
   }
-  .stat-item .stat-number{ font-size: 1.9rem; }
-  .stat-item .stat-label{ font-size: 0.85rem; }
+  .stat-item .stat-number { font-size: 1.8rem; }
+  .stat-item .stat-label { font-size: 0.82rem; }
 
-  /* 5) 섹션 제목/설명 줄바꿈 안정화 (부자연스러운 개행 완화) */
-  .section-title{ line-height: 1.25; }
-  .section-desc{ line-height: 1.65; }
-
-  /* 6) "AI가 코칭해드려요" 섹션: 왼쪽 정렬로 (사용자 요청) */
-  .app-preview .container{ text-align: left; }
-  .app-feature{ align-items: flex-start; }
-  .app-feature h4,
-  .app-feature p{ text-align: left; }
-
-  /* 7) 이미지 과대 방지 (아까처럼 커지는 문제 방지) */
-  .hero-visual img{
+  .hero-visual img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
   }
-  .app-preview-img{
-    max-width: 100%;
+  .app-preview-img {
+    max-width: 100% !important;
     height: auto;
   }
 
-  /* 8) 플로팅 버튼: 폭 고정 + 가운데 정렬 */
-  .float-indicator{
+  .float-indicator {
     width: calc(100% - 36px);
     max-width: 360px;
     height: 54px;
@@ -1292,7 +1300,7 @@ footer{
     padding: 0;
     border-radius: 54px;
   }
-
+}
 
 </style>
 </head>
