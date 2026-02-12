@@ -244,7 +244,7 @@ nav .container { display:flex; align-items:center; justify-content:space-between
 }
 .hero-visual img {
   width: 100%; 
-  max-width: 400px;
+  max-width: 360px;
   height: auto;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -971,27 +971,139 @@ footer .footer-links a:hover { color: var(--accent); }
   .hero .container { grid-template-columns: 1fr; text-align: center; }
   .hero-text { max-width: 100%; }
   .hero-actions { justify-content: center; }
-  .hero-stats { justify-content: center; }
   .hero-visual { margin-top: 40px; }
+
   .features-grid { grid-template-columns: 1fr 1fr; }
 
-  .showcase .container { grid-template-columns: 1fr; }
+  /* 이미지 순서 바꾸기(모바일/태블릿에서만) - Grid보다 Flex가 확실 */
+  .showcase .container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
   .showcase-content { order: 1; }
   .showcase-image { order: 2; }
 
-  .indicator-section .container { grid-template-columns: 1fr; }
+  .indicator-section .container{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .indicator-content { order: 1; }
+  .indicator-visual { order: 2; }
 
-  .app-preview .container {
-    grid-template-columns: 1fr;
+  .app-preview .container{
     display: flex;
     flex-direction: column-reverse;
+    gap: 40px;
+    text-align: left;
   }
-
   .app-preview-img { margin: 0 auto; }
 
   .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .steps::before { display: none; }
 }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  section { padding: 52px 0; } /* 섹션 위아래 공간 살짝 줄임 */
+
+  .features-grid,
+  .products-grid,
+  .reviews,
+  .steps,
+  .routine-grid { grid-template-columns: 1fr; }
+
+  /* HERO 모바일 */
+  .hero { min-height: auto; padding-top: 100px; padding-bottom: 40px; }
+  .hero-inline-img { display: block; }
+  .hero-visual { display: none; }
+
+  .hero-inline-img img { max-width: 260px; border-radius: 16px; }
+  .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); word-break: keep-all; }
+  .hero-sub { font-size: 0.95rem; line-height: 1.7; word-break: keep-all; }
+
+  /* 버튼 */
+  .hero-actions{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* 버튼 간격 너무 넓으면 여기만 줄이기 */
+  }
+  .hero .btn-primary,
+  .hero .btn-secondary{
+    width: 100%;
+    max-width: 360px;
+    height: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  /* ✅ 5분/93%/2주 간격: "space-between" 쓰면 양끝으로 벌어짐 → gap 중심 정렬 */
+  .hero-stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* ← 간격 줄이려면 center가 맞음 */
+    gap: 14px;              /* ← 여기 숫자로 간격 조절 */
+    margin-top: 22px;
+    flex-wrap: nowrap;
+  }
+  .stat-item{
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
+  .stat-item .stat-number{
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+  .stat-item .stat-label{
+    font-size: 0.78rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* 이미지 과대 방지 */
+  .app-preview-img,
+  .showcase-image img,
+  .indicator-visual img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  /* Floating CTA */
+  .float-indicator{
+    bottom: 24px;
+    width: calc(100% - 48px);
+    max-width: 360px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 52px;
+    font-size: 0.88rem;
+  }
+
+  /* Footer 패딩 (floating 버튼 겹침 방지) */
+  footer { padding-bottom: 100px; }
+}
+
+/* 아주 작은 화면 */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.7rem; }
+  .stat-item .stat-number { font-size: 1.5rem; }
+  .stat-item .stat-label { font-size: 0.72rem; }
+}
+
+/* ===== SECTION BACKGROUND FIX ===== */
+.app-preview{ background: var(--dark-soft); }
+.social-proof{ background: #0a0e17; }
+.cta-section{
+  background: linear-gradient(180deg, #0a0e17 0%, #121826 100%);
+}
+footer{ background: #070b13; }
 
 
 /* ===== MOBILE ===== */
