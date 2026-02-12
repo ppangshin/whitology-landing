@@ -1040,27 +1040,29 @@ footer .footer-links a:hover { color: var(--accent); }
 
   /* ✅ 5분/93%/2주 간격: "space-between" 쓰면 양끝으로 벌어짐 → gap 중심 정렬 */
   .hero-stats{
-    display: flex;
-    flex-direction: row;
-    justify-content: center; /* ← 간격 줄이려면 center가 맞음 */
-    gap: 14px;              /* ← 여기 숫자로 간격 조절 */
-    margin-top: 22px;
-    flex-wrap: nowrap;
-  }
-  .stat-item{
-    flex: 1;
-    text-align: center;
-    min-width: 0;
-  }
-  .stat-item .stat-number{
-    font-size: 1.75rem;
-    line-height: 1.1;
-  }
-  .stat-item .stat-label{
-    font-size: 0.78rem;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
+  display: flex;
+  justify-content: center;   /* 가운데 정렬 */
+  gap: 16px;                 /* 간격 조절 */
+  margin-top: 22px;
+  flex-wrap: nowrap;
+}
+
+.stat-item{
+  flex: 0 0 auto;            /* ← 이게 핵심 */
+  text-align: center;
+}
+
+.stat-item .stat-number{
+  font-size: 1.6rem;         /* 숫자 살짝 축소 */
+  line-height: 1.1;
+}
+
+.stat-item .stat-label{
+  font-size: 0.72rem;        /* 설명 축소 */
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 
   /* 이미지 과대 방지 */
   .app-preview-img,
@@ -1433,6 +1435,41 @@ footer{
     border-radius: 54px;
   }
 
+/* ===== TEXT GAP REDUCE (GLOBAL) ===== */
+
+.section p,
+.hero p{
+  margin-bottom: 16px;   /* 기본 24~32px → 16px로 축소 */
+}
+
+.section h2,
+.section h3{
+  margin-bottom: 12px;   /* 제목 아래 간격도 같이 줄임 */
+}
+
+/* ===== PC 정렬(버튼 끝 ↔ 스탯 끝 맞추기) ===== */
+@media (min-width: 1025px){
+
+  /* 버튼 2개를 좌/우 끝으로 벌려서 라인 기준 만들기 */
+  .hero-actions{
+    width: 100%;
+    justify-content: space-between; /* ← 왼쪽/오른쪽 끝 */
+    flex-wrap: nowrap;              /* PC에서는 한 줄 유지 */
+    margin-bottom: 56px;            /* 버튼 ↔ 스탯 세로 간격(원하면 48~72로 조절) */
+  }
+
+  /* 스탯 3개를 좌/중/우로 벌려서 버튼 라인과 맞추기 */
+  .hero-stats{
+    width: 100%;
+    justify-content: space-between; /* ← 빨간선처럼 양끝 맞춤 */
+    gap: 0;                         /* space-between이면 gap은 0이 깔끔 */
+    margin-top: 0;                  /* 위에서 margin-bottom으로 간격 관리 */
+  }
+
+  .stat-item{
+    flex: 0 0 auto;                 /* 늘어나지 않게 */
+  }
+}
 
 </style>
 </head>
