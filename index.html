@@ -53,7 +53,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .hero::after{content:'';position:absolute;top:0;right:-10%;width:60%;height:100%;background:radial-gradient(ellipse,rgba(110,75,255,.04) 0%,transparent 60%);pointer-events:none}
 .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
 .hero-text{max-width:560px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(110,75,255,.06);border:1px solid rgba(110,75,255,.12);padding:8px 18px;border-radius:100px;font-size:.95rem;color:var(--accent);font-weight:600;margin-bottom:28px;animation:fadeInUp .8s ease}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(110,75,255,.06);border:1px solid rgba(110,75,255,.12);padding:8px 18px;border-radius:100px;font-size:.95rem;color:var(--accent);font-weight:600;margin-bottom:14px;animation:fadeInUp .8s ease}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
 .hero h1{font-size:clamp(2.1rem,3.8vw,3.2rem);font-weight:900;line-height:1.15;letter-spacing:-.03em;margin-bottom:20px;color:var(--text);animation:fadeInUp .8s .1s ease both}
@@ -149,7 +149,7 @@ section{padding:56px 0 64px;position:relative}
 .app-preview{background:var(--bg-alt)}
 .app-preview .container{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-align:left}
 .app-preview-img{width:100%;max-width:480px;border-radius:24px;box-shadow:var(--shadow-lg)}
-.app-features{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.app-features{display:flex;flex-direction:column;gap:16px;margin-top:24px}
 .app-feature{display:flex;gap:16px;align-items:center}
 .app-feature-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:rgba(110,75,255,.06);border:1px solid rgba(110,75,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
 .app-feature h4{font-size:.95rem;font-weight:700;margin-bottom:2px;color:var(--text);text-align:left;line-height:1.4}
@@ -158,7 +158,7 @@ section{padding:56px 0 64px;position:relative}
 .stamp-section{background:#fff;text-align:center}
 .stamp-section .section-desc{margin:0 auto 32px}
 .stamp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:820px;margin:0 auto}
-.stamp-card{background:var(--bg-alt);border:1px solid rgba(110,75,255,.08);border-radius:20px;padding:28px 16px;text-align:center;transition:all .3s;box-shadow:var(--shadow-sm)}
+.stamp-card{background:var(--bg-alt);border:1px solid rgba(110,75,255,.08);border-radius:20px;padding:18px 16px;text-align:center;transition:all .3s;box-shadow:var(--shadow-sm)}
 .stamp-card:hover{border-color:rgba(110,75,255,.25);transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .stamp-icon{font-size:2.2rem;margin-bottom:12px}
 .stamp-days{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
@@ -285,7 +285,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .stat-item .stat-number{font-size:1.5rem;line-height:1.1}
   .stat-item .stat-label{font-size:.82rem;line-height:1.3;white-space:nowrap}
   .app-preview-img,.showcase-image img{max-width:100%;height:auto;object-fit:cover;border-radius:16px}
-  .float-indicator{bottom:16px;width:calc(100% - 32px);max-width:400px;height:46px;display:flex;align-items:center;justify-content:center;padding:0 20px;border-radius:46px;font-size:clamp(.88rem,3.8vw,.98rem);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .float-indicator{bottom:16px;width:calc(100% - 32px);max-width:400px;height:54px;display:flex;align-items:center;justify-content:center;padding:0 24px;border-radius:54px;font-size:clamp(.88rem,3.8vw,.98rem);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   footer{padding-bottom:88px}
   .price-main strong{font-size:2rem}
   .price-main{flex-wrap:wrap;gap:4px}
@@ -300,7 +300,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .product-card h3{font-size:1.1rem}
   .routine-card{padding:22px 18px}
   .routine-card h3{font-size:1.1rem}
-  .stamp-card{padding:20px 10px}
+  .stamp-card{padding:14px 10px}
   .stamp-reward{font-size:1.25rem}
   .stamp-days{font-size:.85rem}
   .stamp-gel{font-size:.72rem}
@@ -309,7 +309,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .review-meta{font-size:.78rem}
   .cta-group{flex-direction:column;align-items:center}
   .cta-group .btn-primary,.cta-group .btn-secondary{width:100%;max-width:360px;justify-content:center}
-  .nav-cta{padding:8px 14px;font-size:.85rem;white-space:nowrap}
+  .nav-cta{padding:10px 18px;font-size:.85rem;white-space:nowrap}
   .nav-logo{font-size:1.2rem}
   .hero-badge{font-size:.85rem;padding:6px 14px;word-break:keep-all;text-align:center}
   .app-feature h4{font-size:.92rem}
@@ -323,7 +323,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .hero h1{font-size:clamp(1.6rem,6vw,2rem)}
   .hero-inline-img img{max-width:220px}
   .stamp-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .stamp-card{padding:16px 8px}
+  .stamp-card{padding:12px 8px}
   .float-indicator{font-size:.78rem}
   .price-main strong{font-size:1.8rem}
 }
@@ -395,7 +395,7 @@ footer .footer-links a:hover{color:var(--accent)}
       <div class="feature-card reveal">
         <div class="feature-icon green">💡</div>
         <h3>의료기기급 LED 디바이스</h3>
-        <p>치과에서 사용하는 것과 동일한 파장의 LED 기술. <span class="hl-blue">미백 · 잇몸 · 충치 케어</span>를 하나의 디바이스로 해결합니다.</p>
+        <p>치과에서 사용하는 것과 동일한 파장의 LED 기술로<br><span class="hl-blue">미백 · 잇몸 · 충치 케어</span>를 하나의 디바이스로 해결합니다.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon violet">📊</div>
@@ -437,7 +437,7 @@ footer .footer-links a:hover{color:var(--accent)}
           <span class="product-tag blue">미백 케어</span>
           <h3>화이트닝 케어 젤</h3>
           <p>미백 성분이 LED 빛과 반응하여<br class="br-mobile"> 치아 표면의 착색을 집중 개선합니다.</p>
-          <p class="product-tip">💡앱으로 달라지는 미백 변화를<br class="br-mobile"> 직접 확인하세요.</p>
+          <p class="product-tip">💡앱으로 달라지는 미백 변화를 직접 확인하세요.</p>
         </div>
       </div>
       <div class="product-card reveal">
@@ -446,7 +446,7 @@ footer .footer-links a:hover{color:var(--accent)}
           <span class="product-tag coral">잇몸 케어</span>
           <h3>잇몸 케어 젤</h3>
           <p>잇몸을 진정시키고 건강한 컨디션을<br class="br-mobile"> 유지하는 데 도움을 줍니다.</p>
-          <p class="product-tip">💡미백 케어와 병행 사용 시<br class="br-mobile"> 시린이 완화에 도움을 줍니다.</p>
+          <p class="product-tip">💡미백 케어와 병행 사용 시 시린이 완화에 도움을 줍니다.</p>
         </div>
       </div>
       <div class="product-card reveal">
@@ -455,7 +455,7 @@ footer .footer-links a:hover{color:var(--accent)}
           <span class="product-tag violet">충치 케어</span>
           <h3>충치 케어 젤</h3>
           <p>불소 코팅으로 충치를 예방하고 치아를 보호합니다.</p>
-          <p class="product-tip">💡아침은 불소, 저녁은 미백·잇몸 케어로<br class="br-mobile"> 건강한 루틴을 완성하세요.</p>
+          <p class="product-tip">💡아침은 불소, 저녁은 미백·잇몸 케어로 건강한 루틴을 완성하세요.</p>
         </div>
       </div>
     </div>
