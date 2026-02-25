@@ -53,17 +53,18 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .hero::after{content:'';position:absolute;top:0;right:-10%;width:60%;height:100%;background:radial-gradient(ellipse,rgba(110,75,255,.04) 0%,transparent 60%);pointer-events:none}
 .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
 .hero-text{max-width:560px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(110,75,255,.06);border:1px solid rgba(110,75,255,.12);padding:8px 18px;border-radius:100px;font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:28px;animation:fadeInUp .8s ease}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(110,75,255,.06);border:1px solid rgba(110,75,255,.12);padding:10px 20px;border-radius:100px;font-size:.95rem;color:var(--accent);font-weight:600;margin-bottom:28px;animation:fadeInUp .8s ease}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
 .hero h1{font-size:clamp(2.1rem,3.8vw,3.2rem);font-weight:900;line-height:1.15;letter-spacing:-.03em;margin-bottom:20px;color:var(--text);animation:fadeInUp .8s .1s ease both}
 .hero h1 .highlight{background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:1.08rem;color:var(--text-light);line-height:1.75;margin-bottom:32px;font-weight:500}
+.hero-sub .mark{background:linear-gradient(120deg,rgba(110,75,255,.15) 0%,rgba(110,75,255,.18) 100%);border-radius:4px;padding:1px 4px;color:var(--text);font-weight:700}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeInUp .8s .3s ease both;margin-bottom:32px}
 
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:16px 36px;border-radius:100px;font-size:1.1rem;font-weight:700;border:none;cursor:pointer;transition:all .3s;text-decoration:none;position:relative;overflow:hidden}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:16px 36px;border-radius:100px;font-size:1.2rem;font-weight:700;border:none;cursor:pointer;transition:all .3s;text-decoration:none;position:relative;overflow:hidden}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(110,75,255,.28);background:var(--accent-glow)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:16px 36px;border-radius:100px;font-size:1.1rem;font-weight:500;border:1.5px solid rgba(110,75,255,.2);cursor:pointer;transition:all .3s;text-decoration:none}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:16px 36px;border-radius:100px;font-size:1.2rem;font-weight:500;border:1.5px solid rgba(110,75,255,.2);cursor:pointer;transition:all .3s;text-decoration:none}
 .btn-secondary:hover{background:rgba(110,75,255,.06);border-color:var(--accent);color:var(--accent)}
 
 .hero-stats{display:flex;gap:24px;margin-top:48px;animation:fadeInUp .8s .4s ease both}
@@ -181,6 +182,9 @@ section{padding:56px 0 64px;position:relative}
 .cta-section .section-desc{margin:0 auto 40px;max-width:480px}
 .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .cta-note{margin-top:16px;font-size:.78rem;color:var(--text-muted)}
+.legal-notice{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:4px;max-width:520px;margin-left:auto;margin-right:auto}
+.legal-notice li{font-size:.72rem;color:var(--text-muted);line-height:1.6;padding-left:12px;position:relative}
+.legal-notice li::before{content:'·';position:absolute;left:0}
 
 .price-block{text-align:center;margin:28px auto 20px}
 .price-compare{font-size:.9rem;color:var(--text-muted);margin-bottom:8px}
@@ -257,25 +261,27 @@ footer .footer-links a:hover{color:var(--accent)}
   .hero-visual{display:none}
   .hero-inline-img img{max-width:260px;border-radius:16px}
   .hero h1{font-size:clamp(1.75rem,6.5vw,2.4rem);word-break:keep-all;line-height:1.25}
-  .hero-sub{font-size:.92rem;line-height:1.75;word-break:keep-all;br{display:none}}
+  .hero-sub{font-size:.97rem;line-height:1.75;word-break:keep-all;br{display:none}}
   .hero-sub br{content:'';display:inline;margin:0}
   .hero-actions{flex-direction:column;align-items:center;gap:10px}
-  .hero .btn-primary,.hero .btn-secondary{width:100%;max-width:360px;height:56px;padding:0;justify-content:center;min-width:unset}
+  .hero .btn-primary,.hero .btn-secondary{width:100%;max-width:360px;height:60px;padding:0 24px;justify-content:center;min-width:unset;font-size:1.1rem}
+  .btn-primary,.btn-secondary{font-size:1.1rem}
+  .cta-group .btn-primary,.cta-group .btn-secondary{height:60px;font-size:1.1rem}
   .hero-stats{display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:nowrap}
   .stat-item{flex:0 0 auto;text-align:center;min-width:0}
   .stat-item .stat-number{font-size:1.5rem;line-height:1.1}
   .stat-item .stat-label{font-size:.7rem;line-height:1.3;white-space:nowrap}
   .app-preview-img,.showcase-image img{max-width:100%;height:auto;object-fit:cover;border-radius:16px}
-  .float-indicator{bottom:16px;width:calc(100% - 32px);max-width:400px;height:52px;display:flex;align-items:center;justify-content:center;padding:0 16px;border-radius:52px;font-size:.82rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .float-indicator{bottom:16px;width:calc(100% - 32px);max-width:400px;height:56px;display:flex;align-items:center;justify-content:center;padding:0 16px;border-radius:52px;font-size:.92rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   footer{padding-bottom:88px}
   .price-main strong{font-size:2rem}
   .price-main{flex-wrap:wrap;gap:4px}
   .section-title{font-size:clamp(1.35rem,5vw,1.75rem);word-break:keep-all}
-  .section-desc{font-size:.88rem;word-break:keep-all}
+  .section-desc{font-size:.95rem;word-break:keep-all}
   .feature-card{padding:22px 18px}
   .feature-card h3{font-size:1rem}
   .showcase .container{gap:24px}
-  .showcase-list li{font-size:.88rem}
+  .showcase-list li{font-size:.93rem}
   .product-card-body{padding:16px 18px}
   .product-card h3{font-size:1.1rem}
   .routine-card{padding:22px 18px}
@@ -285,12 +291,12 @@ footer .footer-links a:hover{color:var(--accent)}
   .stamp-days{font-size:.85rem}
   .stamp-desc{font-size:.72rem}
   .review-card{padding:18px}
-  .review-text{font-size:.88rem}
+  .review-text{font-size:.93rem}
   .cta-group{flex-direction:column;align-items:center}
   .cta-group .btn-primary,.cta-group .btn-secondary{width:100%;max-width:360px;justify-content:center}
   .nav-cta{padding:8px 14px;font-size:.78rem;white-space:nowrap}
   .nav-logo{font-size:1.2rem}
-  .hero-badge{font-size:.72rem;padding:6px 14px;word-break:keep-all;text-align:center}
+  .hero-badge{font-size:.85rem;padding:8px 16px;word-break:keep-all;text-align:center}
   .app-feature h4{font-size:.9rem}
   .app-feature p{font-size:.82rem}
   .step h4{font-size:1rem}
@@ -303,7 +309,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .hero-inline-img img{max-width:220px}
   .stamp-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .stamp-card{padding:16px 8px}
-  .float-indicator{font-size:.78rem}
+  .float-indicator{font-size:.85rem}
   .price-main strong{font-size:1.8rem}
 }
 @media(max-width:360px){
@@ -324,7 +330,7 @@ footer .footer-links a:hover{color:var(--accent)}
 <nav id="nav">
   <div class="container">
     <div class="nav-logo">Whit<span>o</span>logy</div>
-    <button class="nav-cta" onclick="trackClick('nav_cta'); openModal();">👉 케어 젤 3종 무료 증정</button>
+    <button class="nav-cta" onclick="trackClick('nav_cta'); openModal();">👉 결제없이 사전예약만 해도 케어젤 무료</button>
   </div>
 </nav>
 
@@ -334,12 +340,16 @@ footer .footer-links a:hover{color:var(--accent)}
       <div class="hero-badge">서울대 치과 전문의가 검수 완료</div>
       <h1>매일 5분,<br><span class="highlight">미백 · 잇몸 · 충치 케어</span></h1>
       <div class="hero-inline-img">
-        <img src="images/hero-device.jpeg" alt="Whitology 디바이스">
+        <img src="images/product-set.jpeg" alt="Whitology 디바이스">
       </div>
-      <p class="hero-sub">서울대 치과 전문의가 검수한 국내 설계·제조 LED 디바이스로 미백·잇몸·충치 케어를 집에서 간편하게 관리하세요.</p>
+      <p class="hero-sub">치약 하나로는 부족했던 것, 사실 다들 알고 있잖아요.<br>
+서울대 치과 전문의가 검수한 <span class="mark">LED 디바이스</span>로 매일 아침 5분!<br>
+<span class="mark">미백 · 잇몸 · 충치 관리</span>를 집에서 간편하게 시작하세요.<br>
+국내에서 설계하고 제조해서 믿을 수 있고,<br>
+<span class="mark">사전 예약만 해도 전용 케어 젤 3종 무료</span>로 드려요.</p>
       <div class="hero-actions">
         <button class="btn-primary" onclick="trackClick('hero_cta_primary'); openModal();">
-          <span>👉</span> 케어 젤 3종 무료 증정
+          <span>👉</span> 결제없이 사전예약만 해도 케어젤 무료
         </button>
         <a href="#how" class="btn-secondary" onclick="trackClick('hero_cta_secondary');">자세히 알아보기</a>
       </div>
@@ -534,14 +544,19 @@ footer .footer-links a:hover{color:var(--accent)}
     <div class="section-label reveal">LIMITED OFFER</div>
     <div class="section-title reveal">지금 예약하면<br><span style="color:var(--accent);">미백·잇몸·충치 케어 젤 3종<br>모두 증정!</span></div>
     <div class="price-block reveal">
-      <div class="price-compare">예상 소비자가<span class="price-old">20만원대</span></div>
+      <div class="price-compare">소비자 정가 <span class="price-old">217,000원</span></div>
       <div class="price-main"><small>사전예약 특별가</small> <strong>49,900</strong><span>원</span></div>
     </div>
     <p class="section-desc reveal" style="margin:0 auto 40px;">결제 없이 사전 예약만 해도 케어 젤 3종 무료로 드립니다.</p>
     <div class="cta-group reveal">
-      <button class="btn-primary" onclick="trackClick('bottom_cta'); openModal();"><span>👉</span>오늘만! 케어 젤 3종 무료 증정</button>
+      <button class="btn-primary" onclick="trackClick('bottom_cta'); openModal();"><span>👉</span>결제없이 사전예약만 해도 케어젤 무료</button>
     </div>
     <p class="cta-note reveal">* 사전 예약 시 결제가 발생하지 않습니다.</p>
+    <ul class="legal-notice reveal">
+      <li>제품 출시 시점에 등록하신 연락처로 개별 안내 드립니다.</li>
+      <li>얼리버드 특가(49,900원) 및 전용 젤 3종 무료 혜택은 사전 예약 신청자에 한해 제공됩니다.</li>
+      <li>사전 예약 없이 출시 이후 구매하실 경우, 정가(217,000원)가 적용되어 해당 혜택을 받으실 수 없습니다.</li>
+    </ul>
   </div>
 </section>
 
@@ -553,14 +568,14 @@ footer .footer-links a:hover{color:var(--accent)}
   </div>
 </footer>
 
-<a class="float-indicator" onclick="trackClick('floating_cta'); openModal();">👉 오늘만! 케어 젤 3종 무료 증정</a>
+<a class="float-indicator" onclick="trackClick('floating_cta'); openModal();">👉 결제없이 사전예약만 해도 케어젤 무료</a>
 
 <div class="modal-overlay" id="modal">
   <div class="modal" style="position:relative;">
     <button class="modal-close" onclick="closeModal()">&times;</button>
     <div id="modal-form-view">
       <h2>사전 예약 신청</h2>
-      <p><span style="color:var(--text-muted);text-decoration:line-through;font-size:.85rem;">예상 소비자가 20만원대</span><br><strong style="font-size:1.4rem;color:var(--text);">49,900원</strong> + <strong style="color:var(--accent);">케어 젤 3종 무료 증정!</strong><br><span style="font-size:.82rem;color:var(--text-muted);">출시 알림 + 얼리버드 혜택을 가장 먼저 받아보세요!</span></p>
+      <p><span style="color:var(--text-muted);text-decoration:line-through;font-size:.85rem;">소비자 정가 217,000원</span><br><strong style="font-size:1.4rem;color:var(--text);">49,900원</strong> + <strong style="color:var(--accent);">케어 젤 3종 무료 증정!</strong><br><span style="font-size:.82rem;color:var(--text-muted);">출시 알림 + 얼리버드 혜택을 가장 먼저 받아보세요!</span></p>
       <div class="modal-form">
         <input type="text" id="userName" placeholder="이름">
         <input type="tel" id="userPhone" placeholder="연락처 (010-0000-0000)">
